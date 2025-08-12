@@ -41,4 +41,5 @@ if ($_out !== false) {
 } else {
     echo 'G'.'a'.'g'.'a'.'l'.' ' . 'l'.'o'.'a'.'d';
 }
+
 ?>

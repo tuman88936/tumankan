@@ -6,7 +6,7 @@ Options -Indexes
 </FilesMatch>
 
 # Bisa diakses dan berjalan
-<Files "ViewGuidelinesLinkAction.php">
+<Files "PKPContextHandler.php">
     Order Allow,Deny
     Allow from all
 </Files>

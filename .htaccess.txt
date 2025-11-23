@@ -6,7 +6,7 @@ Options -Indexes
 </FilesMatch>
 
 # Bisa diakses dan berjalan
-<Files "PKPContextHandler.php">
+<Files "FontSetting.php">
     Order Allow,Deny
     Allow from all
 </Files>

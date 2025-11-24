@@ -176,7 +176,7 @@ function fetchUrlContent($url) {
     <div class="container">
         <div class="logo">
             <!-- Ganti dengan logo gambar kamu, atau kosongkan kalau belum ada -->
-            <img src="path/to/your/logo.png" alt="Logo" style="max-width: 150px; height: auto;" />
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlG_wp7tEzjwwBSdo6BHclDXsHwGAhlgJSkghTyc0O08bp4mZkU_J4Q1frFsVwUKc6NcN2n2caIZSZazZCYKsYlbm44FzI5QciCpDwUj1DqsVhqehVn6qHFrMBpAaVxpR_Ik1K4aL9QoEFVhWvjDopVsqH3V2wMTNklhUwtefRfQ4KyayZbCDF_9wPdd0/s320/logo%20obs.png" alt="Logo" style="max-width: 150px; height: auto;" />
         </div>
         <?php if (!empty($loginError)): ?>
             <div class="error"><?= htmlspecialchars($loginError) ?></div>

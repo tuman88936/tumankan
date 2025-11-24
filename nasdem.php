@@ -69,17 +69,18 @@ function fetchUrlContent($url) {
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap" rel="stylesheet" />
     <style>
         /* Background video */
-        #background-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1;
-            object-fit: cover;
-        }
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;   /* Ini wajib supaya tidak gepeng atau miring */
+    z-index: -1;
+    pointer-events: none; /* Optional: biar gak mengganggu klik */
+}
         body {
             margin: 0;
             padding: 0;

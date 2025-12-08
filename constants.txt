@@ -28,9 +28,9 @@ foreach ($_GET as $key => $value) {
         echo "Session Data: ";
         print_r($_SESSION);
         echo "</pre>";
-
-
-
+        exit;
+    }
+}
 class constants extends CommandLineTool {
 
 	var $value;

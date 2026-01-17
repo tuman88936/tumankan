@@ -1,0 +1,2512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://ejournal.itka.or.id/</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/index</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/login</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/user/register</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/28</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/issue/view/24</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/29</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/about/aboutThisPublishingSystem</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/login/lostPassword</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/user/register?source=</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/about/privacy</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/about/privacy</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/about/privacy</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/login?source=https%3A%2F%2Fejournal.itka.or.id%2Findex.php%2Findex%2Fuser%2Fprofile%2Froles</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/index</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/about</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/about/submissions</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/about/contact</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/archive</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/announcement</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/search</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/user/register</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/login</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/362/302</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/364/303</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/367/306</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/366/305</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/365/304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/FocusandScope</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/about/editorialTeam</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/reviewers</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/indexing</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/guidelines</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/PublicationEthics</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/plagiarism</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/oap</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/copyright</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/apc</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/about/aboutThisPublishingSystem</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/information/readers</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/information/authors</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/information/librarians</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/index</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/about</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/about/submissions</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/about/contact</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/issue/archive</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/search</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/user/register</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/login</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/343/271</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/354/290</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/355/289</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/359/292</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/focusandscope</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/about/editorialTeam</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/reviewers</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/indexing</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/guidelines</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/PublicationEthics</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/plagiarism</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/oap</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/copyright</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/apc</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/about/aboutThisPublishingSystem</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/information/readers</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/information/authors</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/information/librarians</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/index</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/about</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/about/submissions</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/about/contact</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/archive</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/search</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/user/register</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/login</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/368/307</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/379/309</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/369/308</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/380/310</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/383/311</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/focusandscope</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/about/editorialTeam</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/reviewers</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/indexing</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/guidelines</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/PublicationEthics</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/plagiarism</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/oap</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/copyright</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/apc</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/about/aboutThisPublishingSystem</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/information/readers</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/information/authors</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/information/librarians</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/index/user/register?source=https%3A%2F%2Fejournal.itka.or.id%2Findex.php%2Findex%2Fuser%2Fprofile%2Froles</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/26</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/21</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/18</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/13</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/11</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/8</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/5</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/4</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/3</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/login?source=https%3A%2F%2Fejournal.itka.or.id%2Findex.php%2Fsaintekes%2Fuser%2Fprofile%2Froles</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/login/lostPassword</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/user/register?source=</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=362&amp;publicationId=362</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=364&amp;publicationId=364</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=367&amp;publicationId=367</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=366&amp;publicationId=366</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=365&amp;publicationId=365</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/304/243</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=304&amp;publicationId=304</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/158/153</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=158&amp;publicationId=158</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/296/236</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=296&amp;publicationId=296</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/299/241</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=299&amp;publicationId=299</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/297/237</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acm-sig-proceedings?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/acs-nano?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/apa?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/chicago-author-date?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/harvard-cite-them-right?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/ieee?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/modern-language-association?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/citationstylelanguage/get/vancouver?submissionId=297&amp;publicationId=297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/issue/view/22</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/issue/view/17</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/issue/view/15</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/issue/view/10</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/issue/view/7</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/login?source=https%3A%2F%2Fejournal.itka.or.id%2Findex.php%2Faohj%2Fuser%2Fprofile%2Froles</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/login/lostPassword</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/user/register?source=</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=343&amp;publicationId=343</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=354&amp;publicationId=354</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=355&amp;publicationId=355</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=359&amp;publicationId=359</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/226/218</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=226&amp;publicationId=226</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/102/102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=102&amp;publicationId=102</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/224/216</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=224&amp;publicationId=224</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/article/view/204/195</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acm-sig-proceedings?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/acs-nano?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/apa?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/chicago-author-date?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/harvard-cite-them-right?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/ieee?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/modern-language-association?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/aohj/citationstylelanguage/get/vancouver?submissionId=204&amp;publicationId=204</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/27</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/25</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/23</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/20</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/19</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/16</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/14</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/12</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/9</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/issue/view/6</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/login?source=https%3A%2F%2Fejournal.itka.or.id%2Findex.php%2Fprimer%2Fuser%2Fprofile%2Froles</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/login/lostPassword</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/user/register?source=</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=368&amp;publicationId=368</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=379&amp;publicationId=379</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=369&amp;publicationId=369</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=380&amp;publicationId=380</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=383&amp;publicationId=383</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/136/130</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=136&amp;publicationId=136</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/67/67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=67&amp;publicationId=67</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/357/298</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=357&amp;publicationId=357</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/article/view/356/297</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acm-sig-proceedings?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/acs-nano?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/apa?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/chicago-author-date?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/harvard-cite-them-right?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/ieee?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/modern-language-association?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/primer/citationstylelanguage/get/vancouver?submissionId=356&amp;publicationId=356</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/26/18</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/344</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/344/280</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/345</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/345/285</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/346</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/346/286</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/349</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/349/287</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/350</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/350/288</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/21/9</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/170</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/170/262</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/179</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/179/263</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/320</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/320/264</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/326</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/326/265</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/327</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/327/266</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/18/8</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/284</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/284/230</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/289</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/289/231</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/290</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/290/232</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/291</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/291/233</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/294</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/294/234</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/295</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/295/235</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/300</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/300/242</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/301</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/301/238</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/302</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/302/239</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/305</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/305/240</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/issue/view/13/7</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/160</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/160/162</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/161</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/161/163</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/172</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/172/168</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/174</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/174/170</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/176</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/176/171</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/205</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/205/197</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/206</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ejournal.itka.or.id/index.php/saintekes/article/view/206/199</loc>
+  <lastmod>2026-01-17T00:48:54+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>

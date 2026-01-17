@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /cache/
+
+Sitemap: https://ejournal.itka.or.id/sitemap.xml

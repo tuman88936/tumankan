@@ -6,11 +6,11 @@ error_reporting(E_ALL);
 @session_start();
 
 /**
- * Default path fleksibel:
+ * Default path:
  * - Kalau DOCUMENT_ROOT ada → pakai itu
- * - Kalau tidak → pakai folder tempat file ini
+ * - Kalau tidak → pakai folder tempat file ini berada
  */
-$default_path = isset($_SERVER['DOCUMENT_ROOT']) && is_dir($_SERVER['DOCUMENT_ROOT'])
+$default_path = (isset($_SERVER['DOCUMENT_ROOT']) && is_dir($_SERVER['DOCUMENT_ROOT']))
     ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\')
     : __DIR__;
 
@@ -40,9 +40,12 @@ if (isset($_GET['action']) && $_GET['action'] === 'autologin' && !empty($_GET['t
         }
 
         $docRoot = isset($_SERVER['DOCUMENT_ROOT']) ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') : '';
-        $relative = $docRoot && str_starts_with($targetFile, $docRoot)
-            ? substr($targetFile, strlen($docRoot))
-            : $targetFile; // fallback jelek tapi aman tidak fatal
+        if ($docRoot && str_starts_with($targetFile, $docRoot)) {
+            $relative = substr($targetFile, strlen($docRoot));
+        } else {
+            // fallback: pakai path apa adanya (kalau mapping webroot beda)
+            $relative = $targetFile;
+        }
 
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
         $url = $scheme . $_SERVER['HTTP_HOST'] . $relative;
@@ -56,7 +59,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'autologin' && !empty($_GET['t
 }
 
 /**
- * Scan backdoor sangat sederhana (pattern‑based)
+ * Scan backdoor (pattern sederhana + aman dari permission error)
  */
 function scanBackdoor($dir) {
     $patterns = [
@@ -69,19 +72,45 @@ function scanBackdoor($dir) {
         return $backdoors;
     }
 
-    $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
-    foreach ($it as $file) {
-        if ($file->isFile() && strtolower($file->getExtension()) === 'php') {
-            $content = @file_get_contents($file->getPathname());
-            if ($content === false) {
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator(
+            $dir,
+            FilesystemIterator::SKIP_DOTS
+            | FilesystemIterator::CURRENT_AS_FILEINFO
+            | FilesystemIterator::FOLLOW_SYMLINKS
+        ),
+        RecursiveIteratorIterator::SELF_FIRST
+    );
+
+    foreach ($iterator as $file) {
+        try {
+            /** @var SplFileInfo $file */
+            if ($file->isDir()) {
+                if (!is_readable($file->getPathname())) {
+                    continue;
+                }
                 continue;
             }
-            foreach ($patterns as $pattern) {
-                if (stripos($content, $pattern) !== false) {
-                    $backdoors[] = $file->getPathname();
-                    break;
+
+            if ($file->isFile() && strtolower($file->getExtension()) === 'php') {
+                $path = $file->getPathname();
+                if (!is_readable($path)) {
+                    continue;
+                }
+                $content = @file_get_contents($path);
+                if ($content === false) {
+                    continue;
+                }
+                foreach ($patterns as $pattern) {
+                    if (stripos($content, $pattern) !== false) {
+                        $backdoors[] = $path;
+                        break;
+                    }
                 }
             }
+        } catch (Throwable $e) {
+            // Permission denied, broken symlink, dll → skip saja
+            continue;
         }
     }
 
@@ -92,7 +121,7 @@ function scanBackdoor($dir) {
  * Helper: tampilkan isi file
  */
 function showFileContent($file) {
-    if (file_exists($file)) {
+    if (file_exists($file) && is_readable($file)) {
         return htmlspecialchars(file_get_contents($file));
     }
     return '';
@@ -103,9 +132,11 @@ function showFileContent($file) {
  */
 function showFileUrl($file) {
     $docRoot = isset($_SERVER['DOCUMENT_ROOT']) ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') : '';
-    $relative_path = $docRoot && str_starts_with($file, $docRoot)
-        ? substr($file, strlen($docRoot))
-        : $file;
+    if ($docRoot && str_starts_with($file, $docRoot)) {
+        $relative_path = substr($file, strlen($docRoot));
+    } else {
+        $relative_path = $file;
+    }
 
     $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
     return $scheme . $_SERVER['HTTP_HOST'] . $relative_path; // [web:198][web:209]
@@ -337,8 +368,6 @@ $page_files = array_slice($backdoors, $offset, $per_page);
 <script>
     let currentUrl = '<?= $view ? showFileUrl($view) : '' ?>';
     let currentFilePath = '<?= $view ? addslashes($view) : '' ?>';
-    let currentPath = '<?= htmlspecialchars($path) ?>';
-    let currentPage = '<?= (int)$page ?>';
 
     function openPreview() {
         if (currentUrl) {

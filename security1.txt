@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 /**
  * Default path:
- * - Kalau DOCUMENT_ROOT ada → pakai itu
+ * - Kalau DOCUMENT_ROOT ada & valid → pakai itu
  * - Kalau tidak → pakai folder tempat file ini berada
  */
 $default_path = (isset($_SERVER['DOCUMENT_ROOT']) && is_dir($_SERVER['DOCUMENT_ROOT']))
@@ -22,14 +22,14 @@ $per_page = 10;
 
 /**
  * MODE: AUTOLOGIN (session bypass + redirect ke webshell)
- * Pemanggilan: scanners.php?action=autologin&target=/full/path/ke/file.php
+ * URL: ?action=autologin&target=/full/path/ke/file.php
  */
 if (isset($_GET['action']) && $_GET['action'] === 'autologin' && !empty($_GET['target'])) {
     $targetFile = $_GET['target'];
 
     if (file_exists($targetFile)) {
 
-        // SESUAIKAN daftar key ini dengan pola webshell yang sering kamu temui
+        // SESUAIKAN key ini dengan pola webshell yang sering kamu temui
         $sessionKeys = [
             'logged_in',
             'd5587b78418472a83b6a4b208c081080',
@@ -43,8 +43,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'autologin' && !empty($_GET['t
         if ($docRoot && str_starts_with($targetFile, $docRoot)) {
             $relative = substr($targetFile, strlen($docRoot));
         } else {
-            // fallback: pakai path apa adanya (kalau mapping webroot beda)
-            $relative = $targetFile;
+            $relative = $targetFile; // fallback kalau mapping beda
         }
 
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
@@ -59,7 +58,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'autologin' && !empty($_GET['t
 }
 
 /**
- * Scan backdoor (pattern sederhana + aman dari permission error)
+ * Scan backdoor (pattern sederhana, aman dari permission error)
  */
 function scanBackdoor($dir) {
     $patterns = [
@@ -72,31 +71,32 @@ function scanBackdoor($dir) {
         return $backdoors;
     }
 
-    $iterator = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator(
+    try {
+        $directoryIterator = new RecursiveDirectoryIterator(
             $dir,
             FilesystemIterator::SKIP_DOTS
-            | FilesystemIterator::CURRENT_AS_FILEINFO
-            | FilesystemIterator::FOLLOW_SYMLINKS
-        ),
+        );
+    } catch (Throwable $e) {
+        // Root path tidak bisa dibuka → anggap kosong
+        return $backdoors;
+    }
+
+    $iterator = new RecursiveIteratorIterator(
+        $directoryIterator,
         RecursiveIteratorIterator::SELF_FIRST
     );
 
     foreach ($iterator as $file) {
         try {
             /** @var SplFileInfo $file */
-            if ($file->isDir()) {
-                if (!is_readable($file->getPathname())) {
-                    continue;
-                }
+            $path = $file->getPathname();
+
+            // Skip path yang memang tidak bisa dibaca (permission denied, dsb.)
+            if (!is_readable($path)) {
                 continue;
             }
 
             if ($file->isFile() && strtolower($file->getExtension()) === 'php') {
-                $path = $file->getPathname();
-                if (!is_readable($path)) {
-                    continue;
-                }
                 $content = @file_get_contents($path);
                 if ($content === false) {
                     continue;
@@ -109,7 +109,7 @@ function scanBackdoor($dir) {
                 }
             }
         } catch (Throwable $e) {
-            // Permission denied, broken symlink, dll → skip saja
+            // Apa pun error di level file/folder → skip
             continue;
         }
     }

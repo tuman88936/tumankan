@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // ================== CONFIG ==================
-$CONFIG_ROOT = '/var/www';   // GANTI SESUAI MAU LO
+$CONFIG_ROOT  = __DIR__;   // GANTI SESUAI MAU LO
 $PASSWORD_HASH = '$2y$10$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // HASH BCRYPT LO
 $SESSION_KEY   = 'fm_auth';
 // ============================================

